@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MealPlanner from "./MealPlanner";
+import MealPlanner from "../partials/MealPlanner";
 
 function HomePage() {
   const [selectedDay, setSelectedDay] = useState("");

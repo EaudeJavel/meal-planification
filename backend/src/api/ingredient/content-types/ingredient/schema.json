@@ -4,7 +4,8 @@
   "info": {
     "singularName": "ingredient",
     "pluralName": "ingredients",
-    "displayName": "Ingredient"
+    "displayName": "Ingredient",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,9 +14,6 @@
   "attributes": {
     "Name": {
       "type": "string"
-    },
-    "Quantity": {
-      "type": "decimal"
     }
   }
 }

@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Date": {
+    "date": {
       "type": "date"
     },
-    "Midi": {
+    "midi": {
       "type": "boolean"
     },
     "ingredients": {
