@@ -1,28 +1,52 @@
 import React from "react";
+import { useState } from "react";
+import { useForm } from "./useForm";
+import { addMeal } from "./api";
 
-function MealPlanner({ selectedDay, setSelectedDay, selectedMeal, setSelectedMeal }) {
-  const daysOfWeek = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+function MealPlanner() {
+  const [modifiedData, handleInputChange] = useForm({
+    name: "",
+    day: "",
+  });
 
-  function handleDaySelect(event) {
-    setSelectedDay(event.target.value);
-  }
+  const [error, setError] = useState(null);
 
-  function handleMealSelect(event) {
-    setSelectedMeal(event.target.value);
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await addMeal(modifiedData);
+      console.log(response);
+    } catch (error) {
+      setError(error);
+    }
+  };
 
   return (
     <div>
-      <select value={selectedDay} onChange={handleDaySelect}>
-        <option value="">Select a Day</option>
-        {daysOfWeek.map((day) => (
-          <option key={day} value={day}>
-            {day}
-          </option>
-        ))}
-      </select>
-
-      <input type="text" value={selectedMeal} onChange={handleMealSelect} placeholder="Choisi ton plat" />
+      <form onSubmit={handleSubmit}>
+        <h3>Planner</h3>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            onChange={handleInputChange}
+            value={modifiedData.name}
+          />
+        </label>
+        <label>
+          Day:
+          <input
+            type="text"
+            name="day"
+            onChange={handleInputChange}
+            value={modifiedData.day}
+          />
+        </label>
+        <br />
+        {error && <p>Error: {error.message}</p>}
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
