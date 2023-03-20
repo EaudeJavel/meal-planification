@@ -8,7 +8,7 @@ function Meal() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await api.fetchMeals();
-      setMeals(result.data);
+      setMeals(result);
     };
     fetchData();
   }, []);
