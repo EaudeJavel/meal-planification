@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from "react";
-import * as component from "./api";
+import React from "react";
 
-function MealDetails() {
-  const [meals, setMeals] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await component.fetchMeals();
-      setMeals(result.data);
-    };
-    fetchData();
-  }, []);
+function MealDetails({ meals }) {
+  if (!Array.isArray(meals)) {
+    return <p>Loading meals...</p>;
+  }
 
   return (
     <div>

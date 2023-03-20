@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useForm } from './useForm';
-import { addMeal } from './api';
+import { addMeal } from './Api';
 
 function MealPlanner({ selectedDate, onCancel }) {
   const [modifiedData, handleInputChange] = useForm({

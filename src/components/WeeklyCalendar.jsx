@@ -20,7 +20,7 @@ function WeeklyCalendar() {
             onClick={() => setSelectedDate(day)}
             className='day'
           >
-            {format(day, 'EEEE, MMMM dd')}
+            {format(day, 'EEEE dd MMMM')}
           </button>
         ))}
       </div>
