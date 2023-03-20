@@ -1,12 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import { useForm } from "./useForm";
-import { addMeal } from "./api";
+import React from 'react';
+import { useState } from 'react';
+import { useForm } from './useForm';
+import { addMeal } from './api';
 
 function MealPlanner() {
   const [modifiedData, handleInputChange] = useForm({
-    name: "",
-    day: "",
+    name: '',
+    day: '',
   });
 
   const [error, setError] = useState(null);
@@ -16,6 +16,7 @@ function MealPlanner() {
     try {
       const response = await addMeal(modifiedData);
       console.log(response);
+      setError(null);
     } catch (error) {
       setError(error);
     }
@@ -28,8 +29,8 @@ function MealPlanner() {
         <label>
           Name:
           <input
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             onChange={handleInputChange}
             value={modifiedData.name}
           />
@@ -37,15 +38,15 @@ function MealPlanner() {
         <label>
           Day:
           <input
-            type="text"
-            name="day"
+            type='text'
+            name='day'
             onChange={handleInputChange}
             value={modifiedData.day}
           />
         </label>
         <br />
         {error && <p>Error: {error.message}</p>}
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     </div>
   );

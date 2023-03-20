@@ -6,8 +6,8 @@ function MealDetails() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await component.readMeals();
-      setMeals(result.data.data);
+      const result = await component.fetchMeals();
+      setMeals(result.data);
     };
     fetchData();
   }, []);
@@ -17,13 +17,14 @@ function MealDetails() {
       {meals.map((meal, i) => (
         <div key={i}>
           <h2>{meal.attributes.name}</h2>
-          {/* <img src={meal.photo} alt={meal.title} /> */}
-          {/* <p>Date Planned: {meal.date}</p> */}
-          {/* <p>Preparation Time: {meal.preparationTime}</p> */}
-          {/* <h3>Lunch:</h3>
-          <p>{meal.lunch}</p>
-          <h3>Dinner:</h3>
-          <p>{meal.dinner}</p> */}
+          <h3>{meal.attributes.day}</h3>
+          <h3>Ingredients:</h3>
+          <ul>
+            {meal.attributes.ingredients.data.map((ingredient, index) => (
+              <li key={index}>{ingredient.attributes.name}</li>
+            ))}
+          </ul>
+          <br />
         </div>
       ))}
     </div>

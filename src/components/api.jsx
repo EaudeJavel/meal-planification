@@ -4,7 +4,8 @@ const API_URL = "http://localhost:1337/api";
 
 // Récupère la liste des recettes
 export const fetchMeals = async () => {
-  const response = await axios.get(`${API_URL}/meals`);
+  const response = await axios.get(`${API_URL}/meals?populate=ingredients`);
+  console.log(response.data);
   return response.data;
 };
 
