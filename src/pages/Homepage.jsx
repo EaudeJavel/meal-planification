@@ -1,20 +1,12 @@
-import React, { useState } from "react";
-import MealPlanner from "../components/MealPlanner";
+import React from 'react';
+import WeeklyCalendar from '../components/WeeklyCalendar';
 
 function HomePage() {
-  const [selectedDay, setSelectedDay] = useState("");
-  const [selectedMeal, setSelectedMeal] = useState("");
-
   return (
     <div>
       <h1>Meal Planner</h1>
       <h2>Meal of the Day</h2>
-      <MealPlanner
-        selectedDay={selectedDay}
-        setSelectedDay={setSelectedDay}
-        selectedMeal={selectedMeal}
-        setSelectedMeal={setSelectedMeal}
-      />
+      <WeeklyCalendar />
     </div>
   );
 }
