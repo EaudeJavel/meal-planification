@@ -23,8 +23,9 @@
     },
     "ingredients": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::ingredient.ingredient"
+      "relation": "manyToMany",
+      "target": "api::ingredient.ingredient",
+      "inversedBy": "meals"
     },
     "day": {
       "type": "string"
