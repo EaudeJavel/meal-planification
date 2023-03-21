@@ -7,7 +7,7 @@ function WeeklyCalendar() {
 
   const daysOfWeek = Array.from({ length: 7 }, (_, i) => {
     const today = new Date();
-    const start = startOfWeek(today, { weekStartsOn: 1 });
+    const start = startOfWeek(today, { weekStartsOn: today.getDay() });
     return addDays(start, i);
   });
 

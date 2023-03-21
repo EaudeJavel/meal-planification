@@ -20,6 +20,9 @@
       "relation": "manyToMany",
       "target": "api::meal.meal",
       "inversedBy": "ingredients"
+    },
+    "quantity": {
+      "type": "decimal"
     }
   }
 }

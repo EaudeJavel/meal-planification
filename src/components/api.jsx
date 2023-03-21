@@ -14,7 +14,7 @@ export const fetchMeals = async (startDate, endDate) => {
     const response = await axios.get(`${API_URL}/meals`, {
       params: queryParams,
     });
-
+    console.log('Meals response:', response.data.data);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching meals:', error);

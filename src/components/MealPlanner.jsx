@@ -1,106 +1,40 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useForm } from './useForm';
-import { addMeal, fetchIngredients } from './Api';
-import AddIngredient from './AddIngredient';
+import React, { useState, useEffect } from 'react';
+import SelectMeal from './SelectMeal';
+import CreateMeal from './CreateMeal';
+import { fetchMeals, addMeal } from './Api';
 
 function MealPlanner({ selectedDate, onCancel }) {
-  const [modifiedData, handleInputChange] = useForm({
-    name: '',
-    day: selectedDate,
-    ingredients: [],
-  });
+  const [meals, setMeals] = useState([]);
+  const [selectedMeal, setSelectedMeal] = useState(null);
 
-  const [error, setError] = useState(null);
-  const [ingredients, setIngredients] = useState([]);
-
-  // Fetch ingredients from the API and store them in the `ingredients` state
-  useEffect(() => {
-    const loadIngredients = async () => {
-      try {
-        const data = await fetchIngredients();
-        setIngredients(data);
-      } catch (error) {
-        setError(error);
-      }
-    };
-    loadIngredients();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await addMeal(modifiedData);
-      console.log('Meal added:', response);
-      setError(null);
-      onCancel();
-    } catch (error) {
-      setError(error);
-    }
+  const fetchAndSetMeals = async () => {
+    const fetchedMeals = await fetchMeals();
+    setMeals(fetchedMeals);
   };
 
+  useEffect(() => {
+    fetchAndSetMeals();
+  }, []);
+
+  const handleSubmit = async (mealData) => {
+    const createdMeal = await addMeal(mealData);
+    setSelectedMeal(createdMeal);
+  };
+
+  if (!selectedMeal) {
+    return (
+      <div>
+        <SelectMeal meals={meals} onSelect={setSelectedMeal} selectedDate={selectedDate} />
+        <CreateMeal onSubmit={handleSubmit} selectedDate={selectedDate} />
+      </div>
+    );
+  }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        {/* Form field for meal name */}
-        <label>
-          Name:
-          <input
-            type='text'
-            name='name'
-            onChange={handleInputChange}
-            value={modifiedData.name}
-          />
-        </label>
-        {/* Form field for day */}
-        <label>
-          Day:
-          <input
-            type='text'
-            name='day'
-            onChange={handleInputChange}
-            value={modifiedData.day}
-          />
-        </label>
-        {/* Multi-select dropdown to select existing ingredients */}
-        <label>
-          Ingredients:
-                    <select
-            multiple
-            value={modifiedData.ingredients}
-            onChange={(e) => {
-              const selectedOptions = Array.from(
-                e.target.selectedOptions,
-                (option) => option.value
-              );
-              handleInputChange({
-                target: { name: 'ingredients', value: selectedOptions },
-              });
-            }}
-          >
-            {ingredients.map((ingredient) => (
-              <option key={ingredient.id} value={ingredient.id}>
-                {/* Check if the 'attributes' property exists before accessing 'name' to prevent errors */}
-                {ingredient.attributes ? ingredient.attributes.name : ''}
-              </option>
-            ))}
-          </select>
-
-        </label>
-        {/* AddIngredient component to add new ingredients */}
-        <AddIngredient
-          onAdd={(newIngredient) => {
-            setIngredients([...ingredients, newIngredient]);
-          }}
-        />
-        {/* Error message display */}
-        {error && <p>Error: {error.message}</p>}
-        {/* Buttons for submitting and canceling */}
-        <button type='submit'>Submit</button>
-        <button type='button' onClick={onCancel}>
-          Cancel
-        </button>
-      </form>
+      <h3>Selected Meal: {selectedMeal.attributes ? selectedMeal.attributes.name : selectedMeal.name}</h3>
+        {/* Ingredient feature should be displayed here now that a meal is selected /}
+        {/ ... */}
+      <button onClick={onCancel}>Cancel</button>
     </div>
   );
 }
