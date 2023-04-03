@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function CreateMeal({ onSubmit, selectedDate }) {
+function CreateMeal({ onSubmit }) {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
 

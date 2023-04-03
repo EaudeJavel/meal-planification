@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import SelectMeal from './SelectMeal';
 import CreateMeal from './CreateMeal';
-import { fetchMeals, addMeal } from './Api';
+import { fetchMeals, addMeal, addIngredient } from './Api';
 
-function MealPlanner({ selectedDate, onCancel }) {
+function MealPlanner({ onCancel }) {
   const [meals, setMeals] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const fetchAndSetMeals = async () => {
     const fetchedMeals = await fetchMeals();
@@ -17,8 +18,10 @@ function MealPlanner({ selectedDate, onCancel }) {
   }, []);
 
   const handleSubmit = async (mealData) => {
-    const createdMeal = await addMeal(mealData);
-    setSelectedMeal(createdMeal);
+    const mealDataWithDate = { ...mealData, date: selectedDate.toISOString() };
+  console.log(mealDataWithDate);
+  const createdMeal = await addMeal(mealDataWithDate);
+  setSelectedMeal(createdMeal);
   };
 
   if (!selectedMeal) {
