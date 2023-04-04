@@ -14,13 +14,30 @@ export const fetchMeals = async (startDate, endDate) => {
     const response = await axios.get(`${API_URL}/meals`, {
       params: queryParams,
     });
-    console.log('Meals response:', response.data.data);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching meals:', error);
     throw error;
   }
 };
+
+
+export const fetchMeal = async (id) => {
+  try {
+    const queryParams = new URLSearchParams({
+      populate: 'ingredients'
+    });
+
+    const response = await axios.get(`${API_URL}/meals/${id}`, {
+      params: queryParams,
+    });
+    return response.data.data;
+  } catch (error) {
+    console.error("Error fetching meal:", error);
+    throw error;
+  }
+};
+
 
 // Fetch the list of ingredients
 export const fetchIngredients = async () => {

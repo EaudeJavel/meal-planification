@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import SelectMeal from './SelectMeal';
 import CreateMeal from './CreateMeal';
-import { fetchMeals, addMeal, addIngredient } from './Api';
+import { fetchMeals, addMeal } from './Api';
+import { SubHeading, Button } from '../styles'; // Import this from your styles.js
+
 
 function MealPlanner({ onCancel }) {
   const [meals, setMeals] = useState([]);
@@ -34,10 +36,8 @@ function MealPlanner({ onCancel }) {
   }
   return (
     <div>
-      <h3>Selected Meal: {selectedMeal.attributes ? selectedMeal.attributes.name : selectedMeal.name}</h3>
-        {/* Ingredient feature should be displayed here now that a meal is selected /}
-        {/ ... */}
-      <button onClick={onCancel}>Cancel</button>
+      <SubHeading>Selected Meal: {selectedMeal.attributes ? selectedMeal.attributes.name : selectedMeal.name}</SubHeading>
+      <Button onClick={onCancel}>Cancel</Button>
     </div>
   );
 }

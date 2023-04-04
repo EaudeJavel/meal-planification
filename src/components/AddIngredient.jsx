@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { addIngredient, fetchIngredients } from "./Api";
+import { FormLabel, TextInput, Button } from "../styles";
+
 
 function AddIngredients({ onAdd }) {
   const [newIngredient, setNewIngredient] = useState("");
@@ -22,16 +24,16 @@ function AddIngredients({ onAdd }) {
 
   return (
     <>
-      <label>
+      <FormLabel>
         New Ingredient:
-        <input
+        <TextInput
           type="text"
           name="newIngredient"
           value={newIngredient}
           onChange={handleNewIngredient}
         />
-      </label>
-      <button onClick={addNewIngredient}>Add Ingredient</button>
+      </FormLabel>
+      <Button onClick={addNewIngredient}>Add Ingredient</Button>
     </>
   );
 }

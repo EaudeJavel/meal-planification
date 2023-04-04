@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MealDetails from "../components/MealDetails";
 import * as api from "../components/Api";
+import { AppSection, ImageSection, Heading } from '../styles';
 
 function Meal() {
   const [meals, setMeals] = useState([]);
@@ -14,10 +15,13 @@ function Meal() {
   }, []);
 
   return (
-    <div>
-      <h1>Meal Planner</h1>
-      <MealDetails meals={meals} />
-    </div>
+    <>
+      <AppSection>
+        <Heading>Meal Planner</Heading>
+        <MealDetails meals={meals} />
+      </AppSection>
+      <ImageSection />
+    </>
   );
 }
 

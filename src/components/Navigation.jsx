@@ -1,18 +1,19 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Nav, NavLink, NavList, NavItem } from '../styles';
 
 const Navigation = ({ routes }) => {
   return (
-    <nav>
-      <ul>
+    <Nav>
+      <NavList>
         {routes.map(({ name, path }) => {
           return (
-            <li key={path}>
-              <Link to={path}>{name}</Link>
-            </li>
+            <NavItem key={path}>
+              <NavLink to={path}>{name}</NavLink>
+            </NavItem>
           );
         })}
-      </ul>
-    </nav>
+      </NavList>
+    </Nav>
   );
 };
 

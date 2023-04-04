@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, FormLabel, TextInput, Button, SubHeading, IngredientsContainer, IngredientInputGroup } from '../styles';
 
 function CreateMeal({ onSubmit }) {
   const [name, setName] = useState('');
@@ -14,6 +15,12 @@ function CreateMeal({ onSubmit }) {
     setIngredients([...ingredients, { name: '', quantity: 1 }]);
   };
 
+  const removeIngredient = (index) => {
+    const newIngredients = [...ingredients];
+    newIngredients.splice(index, 1);
+    setIngredients(newIngredients);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ name, ingredients });
@@ -21,25 +28,25 @@ function CreateMeal({ onSubmit }) {
 
   return (
     <div>
-      <h3>Create a new meal</h3>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <SubHeading>Create a new meal</SubHeading>
+      <Form onSubmit={handleSubmit}>
+        <FormLabel>
           Meal name:
-          <input value={name} onChange={(e) => setName(e.target.value)} />
-        </label>
-        <div>
+          <TextInput value={name} onChange={(e) => setName(e.target.value)} />
+        </FormLabel>
+        <IngredientsContainer>
           {ingredients.map((ingredient, index) => (
-            <div key={index}>
-              <label>
+            <IngredientInputGroup key={index}>
+              <FormLabel>
                 Ingredient:
-                <input
+                <TextInput
                   value={ingredient.name}
                   onChange={(e) => handleIngredientChange(index, e)}
                 />
-              </label>
-              <label>
+              </FormLabel>
+              <FormLabel>
                 Quantity:
-                <input
+                <TextInput
                   type="number"
                   value={ingredient.quantity}
                   onChange={(e) =>
@@ -50,15 +57,18 @@ function CreateMeal({ onSubmit }) {
                     ])
                   }
                 />
-              </label>
-            </div>
+              </FormLabel>
+              <Button type="button" onClick={() => removeIngredient(index)}>
+                X
+              </Button>
+            </IngredientInputGroup>
           ))}
-        </div>
-        <button type="button" onClick={addIngredient}>
+        </IngredientsContainer>
+        <Button type="button" onClick={addIngredient}>
           Add Ingredient
-        </button>
-        <button type="submit">Submit</button>
-      </form>
+        </Button>
+        <Button type="submit">Submit</Button>
+      </Form>
     </div>
   );
 }

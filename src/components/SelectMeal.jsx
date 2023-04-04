@@ -1,13 +1,14 @@
 import React from 'react';
+import { SubHeading, Button } from '../styles'; // Import these from your styles.js
 
-function SelectMeal({ meals, onSelect, selectedDate }) {
+function SelectMeal({ meals, onSelect }) {
   return (
     <div>
-      <h3>Choose an existing meal</h3>
+      <SubHeading>Choose an existing meal</SubHeading>
       {meals.map((meal) => (
-        <button key={meal.id} onClick={() => onSelect(meal)}>
+        <Button key={meal.id} onClick={() => onSelect(meal)}>
           {meal.attributes.name}
-        </button>
+        </Button>
       ))}
     </div>
   );
