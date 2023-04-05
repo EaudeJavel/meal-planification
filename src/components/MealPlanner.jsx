@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SelectMeal from './SelectMeal';
 import CreateMeal from './CreateMeal';
 import { fetchMeals, addMeal } from './Api';
-import { SubHeading, Button } from '../styles'; // Import this from your styles.js
+import { SubHeading, Button, MealPlannerContainer } from "../styles";
 
 
 function MealPlanner({ onCancel }) {
@@ -28,10 +28,10 @@ function MealPlanner({ onCancel }) {
 
   if (!selectedMeal) {
     return (
-      <div>
+      <MealPlannerContainer>
         <SelectMeal meals={meals} onSelect={setSelectedMeal} selectedDate={selectedDate} />
         <CreateMeal onSubmit={handleSubmit} selectedDate={selectedDate} />
-      </div>
+      </MealPlannerContainer>
     );
   }
   return (
@@ -40,6 +40,6 @@ function MealPlanner({ onCancel }) {
       <Button onClick={onCancel}>Cancel</Button>
     </div>
   );
-}
+} 
 
 export default MealPlanner;

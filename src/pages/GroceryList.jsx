@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMeals } from '../components/Api';
+import { AppSection, Heading } from '../styles';
 
 function GroceryList() {
   const [meals, setMeals] = useState([]);
@@ -32,8 +33,8 @@ function GroceryList() {
 
 
   return (
-    <div>
-      <h1>Liste de courses</h1>
+    <AppSection>
+      <Heading>Liste de courses</Heading>
       <ul>
         {Object.entries(groceryList).map(([ingredient, count]) => (
           <li key={ingredient}>
@@ -41,7 +42,7 @@ function GroceryList() {
           </li>
         ))}
       </ul>
-    </div>
+    </AppSection>
   );
 }
 

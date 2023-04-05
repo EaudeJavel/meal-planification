@@ -1,5 +1,13 @@
-import { MealDetailsContainer, MealName, MealDate, Button, NextMealsContainer, RemainingMealsContainer} from "../styles";
 import { Link } from "react-router-dom";
+import {
+  MealDetailsContainer,
+  MealName,
+  MealDate,
+  Button,
+  NextMealsContainer,
+  RemainingMealsContainer,
+  MealDetailsCard,
+} from "../styles";
 
 function MealDetails({ meals }) {
   if (!Array.isArray(meals)) {
@@ -13,27 +21,25 @@ function MealDetails({ meals }) {
     <MealDetailsContainer>
       <NextMealsContainer>
         {nextTwoMeals.map((meal, i) => (
-          <div key={i}>
+          <MealDetailsCard key={i}>
             <MealName>{meal.attributes.name}</MealName>
-            <MealDate>{meal.attributes.day}</MealDate>
+            <MealDate>{meal.attributes.date}</MealDate>
             <Link to={`/meal/${meal.id}`}>
               <Button>View Meal</Button>
             </Link>
-            <br />
-          </div>
+          </MealDetailsCard>
         ))}
       </NextMealsContainer>
       <hr />
       <RemainingMealsContainer>
         {remainingMeals.map((meal, i) => (
-          <div key={i}>
+          <MealDetailsCard key={i}>
             <MealName>{meal.attributes.name}</MealName>
             <MealDate>{meal.attributes.day}</MealDate>
             <Link to={`/meal/${meal.id}`}>
               <Button>View Meal</Button>
             </Link>
-            <br />
-          </div>
+          </MealDetailsCard>
         ))}
       </RemainingMealsContainer>
     </MealDetailsContainer>

@@ -1,6 +1,6 @@
 import React from 'react';
 import WeeklyCalendar from '../components/WeeklyCalendar';
-import { AppSection, ImageSection, Heading, SubHeading } from '../styles';
+import { AppSection, Heading, SubHeading } from '../styles';
 
 function HomePage() {
   return (
@@ -10,9 +10,6 @@ function HomePage() {
         <SubHeading>Meal of the Day</SubHeading>
         <WeeklyCalendar />
       </AppSection>
-      <ImageSection
-        imageUrl="https://your-placeholder-image-url.com/placeholder.jpg"
-      />
     </>
   );
 }

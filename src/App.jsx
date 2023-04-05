@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import MealPage from "./components/MealPage";
-import { Container, Content } from './styles';
 const pages = import.meta.glob('./pages/*.jsx', { eager: true });
 
 const routes = Object.keys(pages).map((path) => {
@@ -15,9 +14,8 @@ const routes = Object.keys(pages).map((path) => {
 
 export function App() {
   return (
-    <Container>
+    <>
       <Navigation routes={routes} />
-      <Content>
         <Routes>
           {routes.map(({ path, component: RouteComp }) => {
             return (
@@ -26,7 +24,6 @@ export function App() {
           })}
            <Route path="/meal/:id" element={<MealPage />} />
         </Routes>
-      </Content>
-    </Container>
+    </>
   );
 }

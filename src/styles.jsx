@@ -1,189 +1,266 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom'; // Add this import
+import styled, { css } from 'styled-components';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 
-export const AppContainer = styled.div`
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
+const commonBoxShadow = css`
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-export const AppSection = styled.div`
-  width: 50%;
-  padding: 24px;
+const blueColor = '#3f4fa2';
+const primaryColor = '#464f6f';
+const secondaryColor = '#6d7bac';
+const highlightColor = '#ffdca3';
+const accentColor = '#e66b61';
+
+export const Heading = styled.h1`
+  font-size: 32px;
+  font-weight: bold;
+  color: ${blueColor};
+  margin: 0;
 `;
 
 export const ImageSection = styled.div`
-  width: 50%;
-  background-image: url('https://via.placeholder.com/1920x1080');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%;
+  background: center / cover no-repeat;
 `;
 
-export const Container = styled.div`
-  background-color: #2C2C2C;
-  color: #FFFFFF;
-  min-height: 100vh;
+const commonContainerStyles = css`
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-`;
-
-export const Content = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: row;
+  align-items: center;
   padding: 20px;
+  background-color: ${primaryColor};
+  border-radius: 8px;
+  ${commonBoxShadow}
+  margin-bottom: 20px;
 `;
 
-export const Heading = styled.h1`
-  font-size: 2.5rem;
-  margin-bottom: 24px;
+export const CreateMealContainer = styled.div`
+  ${commonContainerStyles}
+`;
+
+export const MealPlannerContainer = styled.div`
+  ${commonContainerStyles}
+`;
+
+export const AppSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+`;
+
+export const FormLabel = styled.label`
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 10px;
+  color: ${blueColor};
+`;
+
+export const TextInput = styled.input`
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid ${secondaryColor};
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+`;
+
+export const Button = styled.button`
+  font-size: 1rem;
+  padding: 10px 20px;
+  background-color: ${accentColor};
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #ff6b5c;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 `;
 
 export const SubHeading = styled.h2`
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: ${blueColor};
+`;
+
+export const IngredientsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
+export const IngredientInputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MealDetailsContainer = styled.div``;
+
+export const MealName = styled.h3`
   font-size: 1.5rem;
-  margin-bottom: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: ${accentColor};
+`;
+
+export const MealDate = styled.p`
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: ${accentColor};
+`;
+
+export const NextMealsContainer = styled.div``;
+
+export const RemainingMealsContainer = styled.div``;
+
+export const IngredientsTitle = styled.h4`
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: ${blueColor};
+`;
+
+export const IngredientList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
+export const IngredientItem = styled.li`
+  font-size: 1.1rem;
+  color: ${primaryColor};
+`;
+
+export const NavigationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: ${accentColor};
+  ${commonBoxShadow}
 `;
 
 export const Nav = styled.nav`
-  background-color: #353535;
   display: flex;
   justify-content: space-around;
-  padding: 15px;
-`;
-
-export const NavLink = styled(Link)`
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  transition: color 0.2s;
-
-  &:hover {
-    color: #E8517A;
-  }
+  width: 100%;
+  background-color: ${primaryColor};
+  padding: 20px 0;
 `;
 
 export const NavList = styled.ul`
   display: flex;
+  justify-content: center;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 `;
 
 export const NavItem = styled.li`
-  margin-right: 20px;
-
-  &:last-child {
-    margin-right: 0;
-  }
+  margin: 0 10px;
 `;
 
-export const Button = styled.button`
-  background-color: #353535;
-  border: none;
-  color: #ffffff;
-  padding: 8px 16px;
-  text-align: center;
+export const NavLink = styled(RouterNavLink)`
+  color: #fff;
+  font-size: 1.1rem;
   text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: #E8517A;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &.active {
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 16px;
 `;
 
-export const FormLabel = styled.label`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  font-weight: bold;
-  margin-bottom: 8px;
-`;
-
-export const IngredientInputGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-`;
-
-export const IngredientsContainer = styled.div`
-  margin-bottom: 16px;
-`;
-
-export const TextInput = styled.input`
-  padding: 6px 12px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-`;
-
-export const MealDetailsContainer = styled.div`
-  background-color: #ffffff;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+export const MealDetailsCard = styled.div`
+  background-color: ${primaryColor};
+  border-radius: 10px;
   padding: 20px;
-  color: #333333;
+  ${commonBoxShadow}
+  margin-bottom: 20px;
 `;
 
-export const MealName = styled.h2`
+export const MealPageContainer = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+export const MealIngredientsSection = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
+export const IngredientCard = styled.div`
+  background-color: ${primaryColor};
+  border-radius: 10px;
+  padding: 20px;
+  ${commonBoxShadow}
+  margin-bottom: 20px;
+  flex-basis: calc(50% - 10px);
+`;
+
+export const SelectMealContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+export const WeeklyCalendarHeading = styled.h2`
+  width: 100%;
+  text-align: center;
   font-size: 24px;
-  font-weight: bold;
+  color: ${blueColor};
   margin-bottom: 10px;
 `;
 
-export const MealDate = styled.h3`
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;
-
-export const MealItem = styled.div`
+export const CalendarContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
 `;
 
-export const IngredientsTitle = styled.h3`
-  font-size: 18px;
-  margin-bottom: 10px;
-`;
-
-export const IngredientList = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`;
-
-export const IngredientItem = styled.li`
-  font-size: 14px;
-  margin-bottom: 5px;
-`;
-
-export const NextMealsContainer = styled.div`
+export const Calendar = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
 `;
 
-export const RemainingMealsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+export const DayButton = styled.button`
+  background-color: ${highlightColor};
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+
+  &:hover {
+    background-color: ${accentColor};
+  }
 `;

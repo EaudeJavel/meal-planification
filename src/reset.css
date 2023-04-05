@@ -35,8 +35,8 @@ ol, ul {
 body {
     line-height: 1;
     font-family: 'Roboto', sans-serif;
-    color: #FFFFFF; /* Set default text color to white */
-    background-color: #2C2C2C;
+    color: #464f6f;
+    background-color: #ffdca3;
 } 
 
 h1, h2, h3, h4, h5, h6 {

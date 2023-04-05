@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMeal } from "./Api";
-import { MealName, MealDate, IngredientsTitle, IngredientList, IngredientItem } from "../styles";
+import {
+  MealName,
+  MealDate,
+  IngredientsTitle,
+  IngredientList,
+  IngredientItem,
+  MealPageContainer,
+} from "../styles";
 
 function MealPage() {
   const [meal, setMeal] = useState(null);
@@ -26,7 +33,7 @@ function MealPage() {
   }
 
   return (
-    <div>
+    <MealPageContainer>
       <MealName>{meal.attributes.name}</MealName>
       <MealDate>{meal.attributes.date}</MealDate>
       <IngredientsTitle>Ingredients:</IngredientsTitle>
@@ -37,7 +44,7 @@ function MealPage() {
           </IngredientItem>
         ))}
       </IngredientList>
-    </div>
+    </MealPageContainer>
   );
 }
 

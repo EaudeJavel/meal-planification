@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { addIngredient, fetchIngredients } from "./Api";
-import { FormLabel, TextInput, Button } from "../styles";
+import {
+  FormLabel,
+  TextInput,
+  Button,
+  Form,
+  SubHeading,
+  AddIngredientsContainer,
+} from "../styles";
 
 
 function AddIngredients({ onAdd }) {
@@ -23,18 +30,21 @@ function AddIngredients({ onAdd }) {
   };
 
   return (
-    <>
-      <FormLabel>
-        New Ingredient:
-        <TextInput
-          type="text"
-          name="newIngredient"
-          value={newIngredient}
-          onChange={handleNewIngredient}
-        />
-      </FormLabel>
-      <Button onClick={addNewIngredient}>Add Ingredient</Button>
-    </>
+    <AddIngredientsContainer>
+      <SubHeading>Add a new ingredient</SubHeading>
+      <Form>
+        <FormLabel>
+          New Ingredient:
+          <TextInput
+            type="text"
+            name="newIngredient"
+            value={newIngredient}
+            onChange={handleNewIngredient}
+          />
+        </FormLabel>
+        <Button onClick={addNewIngredient}>Add Ingredient</Button>
+      </Form>
+    </AddIngredientsContainer>
   );
 }
 

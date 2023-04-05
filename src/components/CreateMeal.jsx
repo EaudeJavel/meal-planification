@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Form, FormLabel, TextInput, Button, SubHeading, IngredientsContainer, IngredientInputGroup } from '../styles';
+import {
+  Form,
+  FormLabel,
+  TextInput,
+  Button,
+  SubHeading,
+  IngredientsContainer,
+  IngredientInputGroup,
+  CreateMealContainer,
+} from "../styles";
 
 function CreateMeal({ onSubmit }) {
   const [name, setName] = useState('');
@@ -27,7 +36,7 @@ function CreateMeal({ onSubmit }) {
   };
 
   return (
-    <div>
+    <CreateMealContainer>
       <SubHeading>Create a new meal</SubHeading>
       <Form onSubmit={handleSubmit}>
         <FormLabel>
@@ -69,7 +78,7 @@ function CreateMeal({ onSubmit }) {
         </Button>
         <Button type="submit">Submit</Button>
       </Form>
-    </div>
+    </CreateMealContainer>
   );
 }
 
