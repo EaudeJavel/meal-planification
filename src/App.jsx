@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import MealPage from "./components/MealPage";
+import Navigation from './components/Navigation/Navigation';
+import MealPage from "./components/MealPage/MealPage";
 const pages = import.meta.glob('./pages/*.jsx', { eager: true });
 
 const routes = Object.keys(pages).map((path) => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addIngredient, fetchIngredients } from "./Api";
+import { addIngredient, fetchIngredients } from "../Api";
 import {
   FormLabel,
   TextInput,
@@ -7,7 +7,7 @@ import {
   Form,
   SubHeading,
   AddIngredientsContainer,
-} from "../styles";
+} from "../../styles";
 
 
 function AddIngredients({ onAdd }) {

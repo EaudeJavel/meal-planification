@@ -5,7 +5,7 @@ import {
   NavList, 
   NavItem, 
   NavigationContainer 
-} from "../styles";
+} from "../../styles";
 
 const Navigation = ({ routes }) => {
   return (

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import SelectMeal from './SelectMeal';
-import CreateMeal from './CreateMeal';
-import { fetchMeals, addMeal } from './Api';
-import { SubHeading, Button, MealPlannerContainer } from "../styles";
+import SelectMeal from '../SelectMeal/SelectMeal';
+import CreateMeal from '../CreateMeal/CreateMeal';
+import { fetchMealTemplates, addMealTemplate } from '../Api';
+import { SubHeading, Button, MealPlannerContainer } from "../../styles";
 
 
 function MealPlanner({ onCancel }) {
@@ -11,7 +11,7 @@ function MealPlanner({ onCancel }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const fetchAndSetMeals = async () => {
-    const fetchedMeals = await fetchMeals();
+    const fetchedMeals = await fetchMealTemplates();
     setMeals(fetchedMeals);
   };
 
@@ -22,7 +22,7 @@ function MealPlanner({ onCancel }) {
   const handleSubmit = async (mealData) => {
     const mealDataWithDate = { ...mealData, date: selectedDate.toISOString() };
   console.log(mealDataWithDate);
-  const createdMeal = await addMeal(mealDataWithDate);
+  const createdMeal = await addMealTemplate(mealDataWithDate);
   setSelectedMeal(createdMeal);
   };
 

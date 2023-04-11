@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMeals } from '../components/Api';
+import { fetchMealTemplates } from '../components/Api';
 import { AppSection, Heading } from '../styles';
 
 function GroceryList() {
@@ -8,7 +8,7 @@ function GroceryList() {
 
   useEffect(() => {
     const fetchWeeklyMeals = async () => {
-      const result = await fetchMeals();
+      const result = await fetchMealTemplates();
       setMeals(result);
     };
     fetchWeeklyMeals();

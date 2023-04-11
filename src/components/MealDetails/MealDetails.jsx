@@ -7,7 +7,7 @@ import {
   NextMealsContainer,
   RemainingMealsContainer,
   MealDetailsCard,
-} from "../styles";
+} from "../../styles";
 
 function MealDetails({ meals }) {
   if (!Array.isArray(meals)) {
@@ -35,8 +35,8 @@ function MealDetails({ meals }) {
         {remainingMeals.map((meal, i) => (
           <MealDetailsCard key={i}>
             <MealName>{meal.attributes.name}</MealName>
-            <MealDate>{meal.attributes.day}</MealDate>
-            <Link to={`/meal/${meal.id}`}>
+            {/* <MealDate>{meal.attributes.day}</MealDate> */}
+            <Link to={`/meal/${meal.attributes.id}`}>
               <Button>View Meal</Button>
             </Link>
           </MealDetailsCard>

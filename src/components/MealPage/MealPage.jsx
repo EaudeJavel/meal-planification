@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMeal } from "./Api";
+import { fetchPlannedMeal } from "../Api";
 import {
   MealName,
   MealDate,
@@ -8,42 +8,43 @@ import {
   IngredientList,
   IngredientItem,
   MealPageContainer,
-} from "../styles";
+} from "../../styles";
 
 function MealPage() {
-  const [meal, setMeal] = useState(null);
+  const [plannedMeal, setPlannedMeal] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetchMeal(id);
+      const result = await fetchPlannedMeal(id);
       console.log("result : ", result);
 
       if (result) {
-        setMeal(result);
+        setPlannedMeal(result);
+        
       } else {
-        console.error("No meal found for the given ID");
+        console.error("No planned meal found for the given ID");
       }
     };
     fetchData();
   }, [id]);
 
-  if (!meal) {
-    return <p>Loading meal...</p>;
+  if (!plannedMeal) {
+    return <p>Loading planned meal...</p>;
   }
 
   return (
     <MealPageContainer>
-      <MealName>{meal.attributes.name}</MealName>
-      <MealDate>{meal.attributes.date}</MealDate>
+      <MealName>{plannedMeal.attributes.notes}</MealName>
+      <MealDate>{plannedMeal.attributes.date}</MealDate>
       <IngredientsTitle>Ingredients:</IngredientsTitle>
-      <IngredientList>
-        {meal.attributes.ingredients.data.map((ingredient, index) => (
+      {/* <IngredientList>
+        {plannedMeal.attributes.mealTemplate.attributes.ingredients.data.map((ingredient, index) => (
           <IngredientItem key={index}>
             {ingredient.attributes.name}
           </IngredientItem>
         ))}
-      </IngredientList>
+      </IngredientList> */}
     </MealPageContainer>
   );
 }

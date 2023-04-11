@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MealDetails from "../components/MealDetails";
+import MealDetails from "../components/MealDetails/MealDetails";
 import * as api from "../components/Api";
 import { AppSection, Heading } from '../styles';
 
@@ -8,7 +8,7 @@ function Meal() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await api.fetchMeals();
+      const result = await api.fetchMealTemplates();
       setMeals(result);
     };
     fetchData();

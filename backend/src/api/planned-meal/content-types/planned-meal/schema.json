@@ -12,17 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "meal_templates": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::meal.meal",
-      "mappedBy": "planned_meal"
-    },
     "date": {
       "type": "date"
     },
     "notes": {
       "type": "richtext"
+    },
+    "meal_template": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::meal.meal",
+      "inversedBy": "planned_meal"
     }
   }
 }

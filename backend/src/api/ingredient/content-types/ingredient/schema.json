@@ -15,14 +15,14 @@
     "name": {
       "type": "string"
     },
-    "meals": {
+    "quantity": {
+      "type": "decimal"
+    },
+    "meal_templates": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::meal.meal",
-      "inversedBy": "ingredients"
-    },
-    "quantity": {
-      "type": "decimal"
+      "mappedBy": "ingredients"
     }
   }
 }

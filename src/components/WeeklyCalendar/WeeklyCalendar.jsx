@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { format, startOfWeek, addDays } from 'date-fns';
-import MealPlanner from './MealPlanner';
+import MealPlanner from '../MealPlanner/MealPlanner';
 import {
   CalendarContainer,
   Calendar,
   DayButton,
   WeeklyCalendarHeading,
-} from "../styles";
+} from "../../styles";
 
 function WeeklyCalendar() {
   const [selectedDate, setSelectedDate] = useState(null);

@@ -1,5 +1,5 @@
 import React from 'react';
-import WeeklyCalendar from '../components/WeeklyCalendar';
+import WeeklyCalendar from '../components/WeeklyCalendar/WeeklyCalendar';
 import { AppSection, Heading, SubHeading } from '../styles';
 
 function HomePage() {
