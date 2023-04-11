@@ -4,7 +4,7 @@
   "info": {
     "singularName": "meal",
     "pluralName": "meals",
-    "displayName": "Meal",
+    "displayName": "MealTemplate",
     "description": ""
   },
   "options": {
@@ -15,20 +15,17 @@
     "name": {
       "type": "string"
     },
-    "date": {
-      "type": "date"
-    },
-    "midi": {
-      "type": "boolean"
-    },
     "ingredients": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::ingredient.ingredient",
       "mappedBy": "meals"
     },
-    "day": {
-      "type": "string"
+    "planned_meal": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::planned-meal.planned-meal",
+      "inversedBy": "meal_templates"
     }
   }
 }

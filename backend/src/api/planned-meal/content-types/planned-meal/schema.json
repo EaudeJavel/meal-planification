@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "planned_meals",
+  "info": {
+    "singularName": "planned-meal",
+    "pluralName": "planned-meals",
+    "displayName": "PlannedMeal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "meal_templates": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::meal.meal",
+      "mappedBy": "planned_meal"
+    },
+    "date": {
+      "type": "date"
+    },
+    "notes": {
+      "type": "richtext"
+    }
+  }
+}
