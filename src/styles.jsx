@@ -6,10 +6,9 @@ const commonBoxShadow = css`
 `;
 
 const blueColor = '#3f4fa2';
-const primaryColor = '#464f6f';
-const secondaryColor = '#6d7bac';
-const highlightColor = '#ffdca3';
-const accentColor = '#e66b61';
+const primaryColor = '#FF6F61';
+const secondaryColor = '#F9A875';
+const accentColor = '#EAEAEA';
 
 export const Heading = styled.h1`
   font-size: 32px;
@@ -250,7 +249,6 @@ export const Calendar = styled.div`
 `;
 
 export const DayButton = styled.button`
-  background-color: ${highlightColor};
   border: none;
   border-radius: 4px;
   padding: 10px;

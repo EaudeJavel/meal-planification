@@ -22,14 +22,15 @@ export const fetchMealTemplates = async () => {
 
 export const fetchPlannedMeal = async (id) => {
   try {
-    // const queryParams = new URLSearchParams({
-    //   populate: 'meals.ingredients',
-    // });
+    const queryParams = new URLSearchParams({
+      _populate: 'meals.ingredients',
+    });
 
     const response = await axios.get(`${API_URL}/planned-meals/${id}`, {
-      // params: queryParams,
+      params: queryParams,
     });
-    return response.data.data;
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error("Error fetching planned meal:", error);
     throw error;
