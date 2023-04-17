@@ -5,8 +5,9 @@ This is a meal planning app built with ReactJS, Strapi, Express for Server-Side 
 Clone the repository from GitHub
 Run npm install to install the required dependencies
 Run npm start to start the development server
-Open http://localhost:3000 in your browser
-Features
+Open http://localhost:5173 in your browser
+
+## Features
 Plan your meals for the week
 Browse and search for recipes
 Create custom recipes
