@@ -8,7 +8,7 @@ import {
   IngredientsContainer,
   IngredientInputGroup,
   CreateMealContainer,
-} from "../../styles";
+} from "./CreateMeal.styles";
 
 function CreateMeal({ onSubmit }) {
   const [name, setName] = useState('');

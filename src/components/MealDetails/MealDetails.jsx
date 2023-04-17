@@ -7,7 +7,7 @@ import {
   NextMealsContainer,
   RemainingMealsContainer,
   MealDetailsCard,
-} from "../../styles";
+} from "./MealDetails.styles";
 
 function MealDetails({ meals }) {
   if (!Array.isArray(meals)) {

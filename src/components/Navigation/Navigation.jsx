@@ -5,7 +5,7 @@ import {
   NavList, 
   NavItem, 
   NavigationContainer 
-} from "../../styles";
+} from "./Navigation.styles";
 
 const Navigation = ({ routes }) => {
   return (
@@ -15,7 +15,7 @@ const Navigation = ({ routes }) => {
           {routes.map(({ name, path }) => {
             return (
               <NavItem key={path}>
-                <NavLink to={path}>{name}</NavLink>
+                <NavLink to={path}>{name.toLowerCase()}</NavLink>
               </NavItem>
             );
           })}

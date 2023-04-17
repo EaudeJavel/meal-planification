@@ -8,7 +8,7 @@ import {
   IngredientList,
   IngredientItem,
   MealPageContainer,
-} from "../../styles";
+} from "./MealPage.styles";
 
 function MealPage() {
   const [plannedMeal, setPlannedMeal] = useState(null);

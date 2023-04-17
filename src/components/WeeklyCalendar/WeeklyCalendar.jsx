@@ -6,7 +6,7 @@ import {
   Calendar,
   DayButton,
   WeeklyCalendarHeading,
-} from "../../styles";
+} from "./WeeklyCalendar.styles";
 
 function WeeklyCalendar() {
   const [selectedDate, setSelectedDate] = useState(null);

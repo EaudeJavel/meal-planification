@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SelectMeal from '../SelectMeal/SelectMeal';
 import CreateMeal from '../CreateMeal/CreateMeal';
 import { fetchMealTemplates, addMealTemplate } from '../Api';
-import { SubHeading, Button, MealPlannerContainer } from "../../styles";
+import { SubHeading, Button, MealPlannerContainer } from "./MealPlanner.styles";
 
 
 function MealPlanner({ onCancel }) {

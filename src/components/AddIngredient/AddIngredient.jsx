@@ -6,8 +6,7 @@ import {
   Button,
   Form,
   SubHeading,
-  AddIngredientsContainer,
-} from "../../styles";
+} from "./AddIngredient.styles";
 
 
 function AddIngredients({ onAdd }) {
@@ -30,7 +29,7 @@ function AddIngredients({ onAdd }) {
   };
 
   return (
-    <AddIngredientsContainer>
+    <div>
       <SubHeading>Add a new ingredient</SubHeading>
       <Form>
         <FormLabel>
@@ -44,7 +43,7 @@ function AddIngredients({ onAdd }) {
         </FormLabel>
         <Button onClick={addNewIngredient}>Add Ingredient</Button>
       </Form>
-    </AddIngredientsContainer>
+    </div>
   );
 }
 

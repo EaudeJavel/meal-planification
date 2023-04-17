@@ -1,5 +1,5 @@
 import React from 'react';
-import { SubHeading, Button, SelectMealContainer } from "../../styles";
+import { SubHeading, Button, SelectMealContainer } from "./SelectMeal.styles";
 
 function SelectMeal({ meals, onSelect }) {
   return (
