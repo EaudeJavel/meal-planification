@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { blueColor, primaryColor, secondaryColor, accentColor, commonContainerStyles } from "../../styles";
+import { paleOrange, deepTaupe, milkChocolate, plumpPurple } from "../../styles";
 
 export const WeeklyCalendarHeading = styled.h2`
   width: 100%;
   text-align: center;
   font-size: 24px;
-  color: ${blueColor};
+  color: ${deepTaupe};
   margin-bottom: 10px;
 `;
 
@@ -35,6 +35,6 @@ export const DayButton = styled.button`
   width: 100%;
 
   &:hover {
-    background-color: ${accentColor};
+    background-color: ${plumpPurple};
   }
 `;

@@ -4,12 +4,10 @@ import {
   NavLink, 
   NavList, 
   NavItem, 
-  NavigationContainer 
 } from "./Navigation.styles";
 
 const Navigation = ({ routes }) => {
   return (
-    <NavigationContainer>
       <Nav>
         <NavList>
           {routes.map(({ name, path }) => {
@@ -21,7 +19,6 @@ const Navigation = ({ routes }) => {
           })}
         </NavList>
       </Nav>
-    </NavigationContainer>
   );
 };
 
