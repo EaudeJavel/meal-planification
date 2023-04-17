@@ -8,16 +8,16 @@ Run npm start to start the development server
 Open http://localhost:5173 in your browser
 
 ## Features
-Plan your meals for the week
-Browse and search for recipes
-Create custom recipes
+Plan your meals for the week,
+Browse and search for recipes,
+Create custom recipes,
 Generate a shopping list based on your meal plan
 
 ## Technologies Used
-ReactJS
-Strapi
-Express
-ViteJS
+ReactJS,
+Strapi,
+Express,
+ViteJS,
 Swagger
 
 ## Getting Started
