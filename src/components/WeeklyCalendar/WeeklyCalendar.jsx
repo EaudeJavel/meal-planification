@@ -36,7 +36,7 @@ function WeeklyCalendar() {
             isSelected={selectedDate?.getTime() === day.getTime()}
           >
             <div className="day-number">{format(day, "dd")}</div>
-            <div className="day-name">{format(day, "EE", { locale: fr })}</div>
+            <div className="day-name">{format(day, "EEEE", { locale: fr })}</div>
             {selectedDate?.getTime() === day.getTime() && <Square />}
           </DayButton>
         ))}

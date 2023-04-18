@@ -17,9 +17,11 @@ export const CalendarContainer = styled.div`
 
 export const Calendar = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
+  margin-bottom: 48px;
 `;
 
 export const DayButton = styled.div`
@@ -27,13 +29,16 @@ export const DayButton = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   color: ${deepTaupe};
   position: relative;
-  margin: 14px;
   cursor: pointer;
   font-weight: ${({ isSelected }) => (isSelected ? "bold" : "normal")};
+
+  &:hover {
+    font-weight: bold;
+  }
 
   .day-number {
     font-size: 20px;
