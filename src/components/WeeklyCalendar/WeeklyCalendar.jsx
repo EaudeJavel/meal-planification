@@ -22,7 +22,6 @@ function WeeklyCalendar() {
   const [selectedDate, setSelectedDate] = useState(null);
   const today = new Date();
   const firstDayOfWeek = getFirstDayOfWeek(selectedDate);
-
   const daysOfWeek = useMemo(() => getDaysOfWeek(today), [today]);
 
   return (
