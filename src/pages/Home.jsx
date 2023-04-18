@@ -1,13 +1,12 @@
 import React from 'react';
 import WeeklyCalendar from '../components/WeeklyCalendar/WeeklyCalendar';
-import { AppSection, Heading, SubHeading } from '../styles';
+import { AppSection, Heading } from '../styles';
 
 function HomePage() {
   return (
     <>
       <AppSection>
-        <Heading>Meal Planner</Heading>
-        <SubHeading>Meal of the Day</SubHeading>
+        <Heading>Planifier ma semaine</Heading>
         <WeeklyCalendar />
       </AppSection>
     </>

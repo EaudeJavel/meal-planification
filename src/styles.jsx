@@ -32,7 +32,7 @@ export const commonContainerStyles = css`
 export const Heading = styled.h1`
   font-size: 32px;
   font-weight: bold;
-  color: #3f4fa2;
+  color: ${deepTaupe};
   margin: 0;
 `;
 
@@ -47,11 +47,4 @@ export const AppSection = styled.section`
   background-color: ${paleOrange};
   align-items: center;
   margin: 40px 0;
-`;
-
-export const SubHeading = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #3f4fa2;
 `;
