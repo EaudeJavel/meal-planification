@@ -3,38 +3,40 @@ import { paleOrange, deepTaupe, milkChocolate, plumpPurple } from "../../styles"
 
 export const WeeklyCalendarHeading = styled.h2`
   width: 100%;
-  text-align: center;
-  font-size: 24px;
+  font-size: 16px;
   color: ${deepTaupe};
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  margin-top: 8px;
 `;
 
 export const CalendarContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 20px;
 `;
 
 export const Calendar = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
 `;
 
-export const DayButton = styled.button`
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  margin: 5px;
-  font-size: 16px;
+export const DayButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  color: ${deepTaupe};
+  position: relative;
+  margin: 14px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  width: 100%;
+  font-weight: ${({ isSelected }) => (isSelected ? "bold" : "normal")};
 
-  &:hover {
-    background-color: ${plumpPurple};
+  .day-number {
+    font-size: 20px;
+    margin-bottom: 4px;
   }
 `;

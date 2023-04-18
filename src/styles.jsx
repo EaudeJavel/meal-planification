@@ -30,7 +30,7 @@ export const commonContainerStyles = css`
 `;
 
 export const Heading = styled.h1`
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
   color: ${deepTaupe};
   margin: 0;
@@ -45,6 +45,5 @@ export const AppSection = styled.section`
   display: flex;
   flex-direction: column;
   background-color: ${paleOrange};
-  align-items: center;
-  margin: 40px 0;
+  padding: 24px;
 `;

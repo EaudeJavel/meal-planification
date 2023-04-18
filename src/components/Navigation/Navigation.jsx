@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
+import {
   Nav,
-  NavLink, 
-  NavList, 
-  NavItem, 
+  NavLink,
+  NavList,
+  NavItem,
 } from "./Navigation.styles";
 
 const Navigation = ({ routes }) => {

@@ -30,6 +30,7 @@ export const NavLink = styled(RouterNavLink)`
   text-decoration: none;
   padding: 5px 10px;
   border-radius: 5px;
+  font-weight: 300;
 
   &:hover {
     color: pink;

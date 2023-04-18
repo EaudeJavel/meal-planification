@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { format, startOfWeek, addDays } from 'date-fns';
 import MealPlanner from '../MealPlanner/MealPlanner';
+import { Square } from '../Square/Square.styles';
 import { fr } from 'date-fns/locale';
 import {
   CalendarContainer,
@@ -32,8 +33,11 @@ function WeeklyCalendar() {
           <DayButton
             key={index}
             onClick={() => setSelectedDate(day)}
+            isSelected={selectedDate?.getTime() === day.getTime()}
           >
-            {format(day, "EEEE dd MMMM")}
+            <div className="day-number">{format(day, "dd")}</div>
+            <div className="day-name">{format(day, "EE", { locale: fr })}</div>
+            {selectedDate?.getTime() === day.getTime() && <Square />}
           </DayButton>
         ))}
       </Calendar>
