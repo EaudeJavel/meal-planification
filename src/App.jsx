@@ -16,7 +16,6 @@ const routes = Object.keys(pages).map((path) => {
 export function App() {
   return (
     <>
-
     <div className="app-container">
       <div className="app-content">
       <Navigation routes={routes} />

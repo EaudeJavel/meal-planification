@@ -4,7 +4,7 @@ import { SubHeading, Button, SelectMealContainer } from "./SelectMeal.styles";
 function SelectMeal({ meals, onSelect }) {
   return (
     <SelectMealContainer>
-      <SubHeading>Choose an existing meal</SubHeading>
+      <SubHeading>Choisir une recette existante</SubHeading>
       {meals.map((meal) => (
         <Button key={meal.id} onClick={() => onSelect(meal)}>
           {meal.attributes.name}

@@ -37,7 +37,7 @@ function CreateMeal({ onSubmit }) {
 
   return (
     <CreateMealContainer>
-      <SubHeading>Create a new meal</SubHeading>
+      <SubHeading>Créer une nouvelle recette</SubHeading>
       <Form onSubmit={handleSubmit}>
         <FormLabel>
           Meal name:

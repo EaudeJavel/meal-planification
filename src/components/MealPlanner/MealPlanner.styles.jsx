@@ -28,6 +28,12 @@ export const Button = styled.button`
   }
 `;
 
+export const InlineButton = styled.div`
+  font-size: 1rem;
+  color: ${deepTaupe};
+  cursor: pointer;
+`;
+
 export const MealPlannerContainer = styled.div`
   ${commonContainerStyles}
 `;
