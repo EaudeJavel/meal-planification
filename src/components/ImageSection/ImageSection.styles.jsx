@@ -1,11 +1,26 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const ImageContainer = styled.div`
-    width: 50%;
-`;
+  width: 50%;
+  position: relative;
 
-export const Image = css`
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-image: linear-gradient(to left, black, #FBD7C16D);
+    opacity: 0.2;
+    z-index: 1;
+  }
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
 `;
