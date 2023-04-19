@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import SelectMeal from '../SelectMeal/SelectMeal';
-import CreateMeal from '../CreateMeal/CreateMeal';
-import { fetchMealTemplates, addMealTemplate } from '../Api';
+import React, { useState, useEffect } from "react";
+import SelectMeal from "../SelectMeal/SelectMeal";
+import CreateMeal from "../CreateMeal/CreateMeal";
+import { fetchMealTemplates, addMealTemplate } from "../Api";
+import { Square } from "../Square/Square.styles";
 import {
   SubHeading,
   Button,
   InlineButton,
   MealPlannerContainer,
 } from "./MealPlanner.styles";
-
 
 function MealPlanner({ onCancel }) {
   const [meals, setMeals] = useState([]);
@@ -34,13 +34,43 @@ function MealPlanner({ onCancel }) {
   if (!selectedMeal) {
     return (
       <>
-        <div style={{ display:'Flex',justifyContent:'space-around',width:'100%' }}>
-          <InlineButton onClick={() => setActiveComponent("CreateMeal")}>
-            Créer une nouvelle recette
-          </InlineButton>
-          <InlineButton onClick={() => setActiveComponent("SelectMeal")}>
-            Choisir une recette existante
-          </InlineButton>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <InlineButton
+              onClick={() => setActiveComponent("CreateMeal")}
+              isActive={activeComponent === "CreateMeal"}
+            >
+              Créer une nouvelle recette
+            </InlineButton>
+            {activeComponent === "CreateMeal" && <Square />}
+          </div>
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <InlineButton
+              onClick={() => setActiveComponent("SelectMeal")}
+              isActive={activeComponent === "SelectMeal"}
+            >
+              Choisir une recette existante
+            </InlineButton>
+            {activeComponent === "SelectMeal" && <Square />}
+          </div>
         </div>
         <MealPlannerContainer>
           {activeComponent === "SelectMeal" && (

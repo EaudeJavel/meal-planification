@@ -1,5 +1,11 @@
-import styled from 'styled-components';
-import { paleOrange, deepTaupe, milkChocolate, plumpPurple, commonContainerStyles } from "../../styles";
+import styled from "styled-components";
+import {
+  paleOrange,
+  deepTaupe,
+  milkChocolate,
+  plumpPurple,
+  commonContainerStyles,
+} from "../../styles";
 
 export const SubHeading = styled.h2`
   font-size: 2rem;
@@ -32,6 +38,11 @@ export const InlineButton = styled.div`
   font-size: 1rem;
   color: ${deepTaupe};
   cursor: pointer;
+  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+
+  &:hover {
+    font-weight: bold;
+  }
 `;
 
 export const MealPlannerContainer = styled.div`

@@ -21,7 +21,7 @@ export const Calendar = styled.div`
   flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
-  margin-bottom: 48px;
+  margin-bottom: 6em;
 `;
 
 export const DayButton = styled.div`
