@@ -25,9 +25,8 @@ export const TextInput = styled.input`
   border: none;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 20px;
   background-color: ${paleOrange};
-  font-weight: bold;
+  font-weight: 400;
   color: ${deepTaupe};
 
   ::-webkit-input-placeholder {
@@ -52,19 +51,17 @@ export const TextInputContainer = styled.div`
   position: relative;
   display: inline-block;
   width: 100%;
-
-  // .input-placeholder {
-  //   display: none;
-  // }
+  margin-bottom: 20px;
 `;
 
 export const Button = styled.button`
+  max-width: 250px;
+  height: 50px;
   font-size: 1rem;
   padding: 10px 20px;
   background-color: ${plumpPurple};
-  color: #fff;
+  color: ${paleOrange};
   border: none;
-  border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s;
 
@@ -82,11 +79,16 @@ export const IngredientsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: ${deepTaupe};
 `;
 
 export const IngredientInputGroup = styled.div`
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const CreateMealContainer = styled.div`
@@ -98,7 +100,7 @@ export const CreateMealContainer = styled.div`
 export const Square = styled.span`
   display: inline-block;
   position: absolute;
-  top: 5px;
+  top: 7px;
   width: 12px;
   height: 12px;
   background-color: ${plumpPurple};

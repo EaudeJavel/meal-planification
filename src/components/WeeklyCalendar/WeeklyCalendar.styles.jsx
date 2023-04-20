@@ -4,6 +4,7 @@ import { paleOrange, deepTaupe, milkChocolate, plumpPurple } from "../../styles"
 export const WeeklyCalendarHeading = styled.h2`
   width: 100%;
   font-size: 16px;
+  font-weight: 300;
   color: ${deepTaupe};
   margin-bottom: 16px;
   margin-top: 8px;
