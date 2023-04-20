@@ -11,6 +11,7 @@ export const WeeklyCalendarHeading = styled.h2`
 
 export const CalendarContainer = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
 `;

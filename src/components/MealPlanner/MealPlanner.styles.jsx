@@ -46,5 +46,6 @@ export const InlineButton = styled.div`
 `;
 
 export const MealPlannerContainer = styled.div`
+  width: 100%;
   ${commonContainerStyles}
 `;

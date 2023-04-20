@@ -1,9 +1,17 @@
-import styled from 'styled-components';
-import { paleOrange, deepTaupe, milkChocolate, plumpPurple, commonContainerStyles } from "../../styles";
+import styled from "styled-components";
+import {
+  paleOrange,
+  deepTaupe,
+  milkChocolate,
+  plumpPurple,
+  commonContainerStyles,
+  commonBoxShadow
+} from "../../styles";
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const FormLabel = styled.label`
@@ -14,13 +22,40 @@ export const FormLabel = styled.label`
 `;
 
 export const TextInput = styled.input`
-  font-size: 1rem;
-  padding: 10px;
-  border: 1px solid ${deepTaupe};
-  border-radius: 5px;
+  border: none;
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 20px;
+  background-color: ${paleOrange};
+  font-weight: bold;
+  color: ${deepTaupe};
+
+  ::-webkit-input-placeholder {
+    color: ${deepTaupe};
+  }
+  ::-moz-placeholder {
+    color: ${deepTaupe};
+  }
+  :-ms-input-placeholder {
+    color: ${deepTaupe};
+  }
+  :-moz-placeholder {
+    color: ${deepTaupe};
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const TextInputContainer = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  // .input-placeholder {
+  //   display: none;
+  // }
 `;
 
 export const Button = styled.button`
@@ -43,13 +78,6 @@ export const Button = styled.button`
   }
 `;
 
-export const SubHeading = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: ${deepTaupe};
-`;
-
 export const IngredientsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -62,5 +90,17 @@ export const IngredientInputGroup = styled.div`
 `;
 
 export const CreateMealContainer = styled.div`
+  width: 100%;
+  margin-top: 3em;
   ${commonContainerStyles}
+`;
+
+export const Square = styled.span`
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: ${plumpPurple};
+  ${commonBoxShadow}
 `;
