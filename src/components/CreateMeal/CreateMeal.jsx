@@ -14,7 +14,7 @@ import {
 function CreateMeal({ onSubmit }) {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [textWidth, setTextWidth] = useState(175);
+  const [textWidth, setTextWidth] = useState(260);
 
   const handleIngredientChange = (index, e) => {
     if (index >= ingredients.length) {
@@ -47,7 +47,6 @@ function CreateMeal({ onSubmit }) {
     const context = canvas.getContext("2d");
     context.font = font;
     const metrics = context.measureText(text);
-    console.log(metrics.width);
     return metrics.width;
   }
 
@@ -56,7 +55,7 @@ function CreateMeal({ onSubmit }) {
     const text = e.target.value;
     setName(text);
     if (text === "") {
-      setTextWidth(175);
+      setTextWidth(260);
       return;
     }
     const width = measureTextWidth(text, "bold 1.2rem Inter");
@@ -68,28 +67,27 @@ function CreateMeal({ onSubmit }) {
       <Form onSubmit={handleSubmit}>
         <TextInputContainer>
           <TextInput
-            placeholder="Nom de la recette"
+            placeholder="Nom de la nouvelle recette"
             value={name}
             style={{ fontWeight: "bold", fontSize: "1.2rem" }}
             onChange={handleInputChange}
           />
           <Square style={{ left: `${textWidth}px` }} />
+
+          <Button type="button" onClick={addIngredient}>
+            Ajouter ingrédient
+          </Button>
         </TextInputContainer>
 
         <IngredientsContainer>
-          Ingredients
-
-          <Button type="button" onClick={addIngredient}>
-            Ajouter
-          </Button>
 
           {/* Container so i can make it scrollable */}
-          <div style={{ width:"70%" }}>
+          <div style={{ width:"100%" }}>
             {ingredients.map((ingredient, index) => (
               <IngredientInputGroup key={index}>
                 <FormLabel>
                   <TextInput
-                    placeholder="Pois chiches"
+                    placeholder="Nom de l'ingrédient"
                     value={ingredient.name}
                     style={{ fontSize: "14px"}}
                     onChange={(e) => handleIngredientChange(index, e)}
@@ -112,6 +110,7 @@ function CreateMeal({ onSubmit }) {
                 <FormLabel>
                   <select
                     value={ingredient.unit}
+                    style={{ background: "none",border: "none", color:'inherit' }}
                     onChange={(e) =>
                       setIngredients([
                         ...ingredients.slice(0, index),
