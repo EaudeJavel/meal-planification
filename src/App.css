@@ -2,6 +2,7 @@
   height: 100vh;
   font-family: "Inter", sans-serif;
   background-color: #FBD7C1;
+  overflow: hidden;
 }
 
 .app-container {

@@ -21,6 +21,10 @@ export const NavList = styled.ul`
 `;
 
 export const NavItem = styled.li`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 10px;
 `;
 
