@@ -11,7 +11,7 @@ def generate_recipe(recipe_name):
     res = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
-        max_tokens=150,
+        max_tokens= 700,
         n=1,
         stop=None,
         temperature=0.8,

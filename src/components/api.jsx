@@ -100,3 +100,13 @@ export const addIngredient = async (ingredientData) => {
     throw error;
   }
 };
+
+export const generateRecipe = async (recipeName) => {
+  try {
+    const response = await axios.post(`${API_URL}/recipe/generate`, { recipe_name: recipeName });
+    return response.data.result;
+  } catch (error) {
+    console.error("Error generating recipe:", error);
+    throw error;
+  }
+};
