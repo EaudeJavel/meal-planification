@@ -4,7 +4,8 @@
   "info": {
     "singularName": "meal",
     "pluralName": "meals",
-    "displayName": "MealTemplate"
+    "displayName": "MealTemplate",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,11 +21,11 @@
       "target": "api::ingredient.ingredient",
       "inversedBy": "meal_templates"
     },
-    "planned_meal": {
+    "planned": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::planned-meal.planned-meal",
-      "mappedBy": "meal_template"
+      "mappedBy": "name"
     }
   }
 }

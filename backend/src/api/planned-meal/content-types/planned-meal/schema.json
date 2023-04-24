@@ -18,11 +18,11 @@
     "notes": {
       "type": "richtext"
     },
-    "meal_template": {
+    "name": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::meal.meal",
-      "inversedBy": "planned_meal"
+      "inversedBy": "planned"
     }
   }
 }

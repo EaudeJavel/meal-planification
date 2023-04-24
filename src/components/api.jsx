@@ -1,12 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:1337/api';
-
+const API_URL = "http://localhost:1337/api";
 
 export const fetchMealTemplates = async () => {
   try {
     const queryParams = new URLSearchParams({
-      populate: 'ingredients',
+      populate: "ingredients",
     });
 
     const response = await axios.get(`${API_URL}/meals`, {
@@ -14,33 +13,45 @@ export const fetchMealTemplates = async () => {
     });
     return response.data.data;
   } catch (error) {
-    console.error('Error fetching meal templates:', error);
+    console.error("Error fetching meal templates:", error);
     throw error;
   }
 };
 
-
 export const fetchPlannedMeal = async (id) => {
   try {
     const queryParams = new URLSearchParams({
-      _populate: 'meals.ingredients',
+      _limit: 1,
+      id,
     });
 
-    const response = await axios.get(`${API_URL}/planned-meals/${id}`, {
+    const response = await axios.get(`${API_URL}/planned-meals/`, {
       params: queryParams,
     });
-    return response.data.data;
+
+    const plannedMeal = response.data.data[0];
+    console.log("plannedMeal", plannedMeal);
+
+    const mealTemplateResponse = await axios.get(
+      `${API_URL}/meals/${plannedMeal.id}`
+    );
+    console.log("mealTemplateResponse", mealTemplateResponse);
+    const mealTemplateName = mealTemplateResponse.data.data.attributes.name;
+
+    return {
+      ...plannedMeal,
+      mealTemplateName,
+    };
   } catch (error) {
     console.error("Error fetching planned meal:", error);
     throw error;
   }
 };
 
-
 export const fetchPlannedMeals = async (startDate, endDate) => {
   try {
     const queryParams = new URLSearchParams({
-      populate: 'mealTemplate',
+      populate: "mealTemplate",
       date_gte: startDate,
       date_lte: endDate,
     });
@@ -50,7 +61,7 @@ export const fetchPlannedMeals = async (startDate, endDate) => {
     });
     return response.data.data;
   } catch (error) {
-    console.error('Error fetching planned meals:', error);
+    console.error("Error fetching planned meals:", error);
     throw error;
   }
 };
@@ -59,10 +70,10 @@ export const fetchPlannedMeals = async (startDate, endDate) => {
 export const fetchIngredients = async () => {
   try {
     const response = await axios.get(`${API_URL}/ingredients`);
-    console.log('Ingredients response:', response.data.data);
+    console.log("Ingredients response:", response.data.data);
     return response.data.data;
   } catch (error) {
-    console.error('Error fetching ingredients:', error);
+    console.error("Error fetching ingredients:", error);
     throw error;
   }
 };
@@ -70,20 +81,24 @@ export const fetchIngredients = async () => {
 // Add a new meal
 export const addMealTemplate = async (mealTemplateData) => {
   try {
-    const response = await axios.post(`${API_URL}/meals`, { data: mealTemplateData });
+    const response = await axios.post(`${API_URL}/meals`, {
+      data: mealTemplateData,
+    });
     return response;
   } catch (error) {
-    console.error('Error adding meal:', error);
+    console.error("Error adding meal:", error);
     throw error;
   }
 };
 
 export const addPlannedMeal = async (plannedMealData) => {
   try {
-    const response = await axios.post(`${API_URL}/planned-meals`, { data: plannedMealData });
+    const response = await axios.post(`${API_URL}/planned-meals`, {
+      data: plannedMealData,
+    });
     return response;
   } catch (error) {
-    console.error('Error adding planned meal:', error);
+    console.error("Error adding planned meal:", error);
     throw error;
   }
 };
@@ -95,14 +110,16 @@ export const addIngredient = async (ingredientData) => {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error('Error adding ingredient:', error);
+    console.error("Error adding ingredient:", error);
     throw error;
   }
 };
 
 export const generateRecipe = async (recipeName) => {
   try {
-    const response = await axios.post(`${API_URL}/recipe/generate`, { recipe_name: recipeName });
+    const response = await axios.post(`${API_URL}/recipe/generate`, {
+      recipe_name: recipeName,
+    });
     return response.data.result;
   } catch (error) {
     console.error("Error generating recipe:", error);

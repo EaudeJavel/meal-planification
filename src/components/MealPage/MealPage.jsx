@@ -35,11 +35,11 @@ function MealPage() {
 
   return (
     <MealPageContainer>
-      <MealName>{plannedMeal.attributes.notes}</MealName>
+      <MealName>{plannedMeal.mealTemplateName}</MealName>
       <MealDate>{plannedMeal.attributes.date}</MealDate>
       <IngredientsTitle>Ingredients:</IngredientsTitle>
       {/* <IngredientList>
-        {plannedMeal.attributes.mealTemplate.attributes.ingredients.data.map((ingredient, index) => (
+        {plannedMeal.relationships.mealTemplate.relationships.ingredients.data.map((ingredient, index) => (
           <IngredientItem key={index}>
             {ingredient.attributes.name}
           </IngredientItem>

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-04-24T15:38:31.392Z"
+    "x-generation-date": "2023-04-24T16:17:14.927Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -500,7 +500,7 @@
                                 }
                               }
                             },
-                            "planned_meal": {
+                            "planned": {
                               "type": "object",
                               "properties": {
                                 "data": {
@@ -519,7 +519,7 @@
                                         "notes": {
                                           "type": "string"
                                         },
-                                        "meal_template": {
+                                        "name": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
@@ -1069,7 +1069,7 @@
                                 }
                               }
                             },
-                            "planned_meal": {
+                            "planned": {
                               "type": "object",
                               "properties": {
                                 "data": {
@@ -1088,7 +1088,7 @@
                                         "notes": {
                                           "type": "string"
                                         },
-                                        "meal_template": {
+                                        "name": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
@@ -1671,7 +1671,7 @@
                                 }
                               }
                             },
-                            "planned_meal": {
+                            "planned": {
                               "type": "object",
                               "properties": {
                                 "data": {
@@ -1690,7 +1690,7 @@
                                         "notes": {
                                           "type": "string"
                                         },
-                                        "meal_template": {
+                                        "name": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
@@ -2240,7 +2240,7 @@
                                 }
                               }
                             },
-                            "planned_meal": {
+                            "planned": {
                               "type": "object",
                               "properties": {
                                 "data": {
@@ -2259,7 +2259,7 @@
                                         "notes": {
                                           "type": "string"
                                         },
-                                        "meal_template": {
+                                        "name": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
@@ -2468,7 +2468,7 @@
                   "example": "string or id"
                 }
               },
-              "planned_meal": {
+              "planned": {
                 "oneOf": [
                   {
                     "type": "integer"
@@ -2553,7 +2553,7 @@
                                               }
                                             }
                                           },
-                                          "planned_meal": {
+                                          "planned": {
                                             "type": "object",
                                             "properties": {
                                               "data": {
@@ -2572,7 +2572,7 @@
                                                       "notes": {
                                                         "type": "string"
                                                       },
-                                                      "meal_template": {
+                                                      "name": {
                                                         "type": "object",
                                                         "properties": {
                                                           "data": {
@@ -2998,7 +2998,7 @@
                   }
                 }
               },
-              "planned_meal": {
+              "planned": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -3135,7 +3135,7 @@
                                               }
                                             }
                                           },
-                                          "planned_meal": {
+                                          "planned": {
                                             "type": "object",
                                             "properties": {
                                               "data": {
@@ -3154,7 +3154,7 @@
                                                       "notes": {
                                                         "type": "string"
                                                       },
-                                                      "meal_template": {
+                                                      "name": {
                                                         "type": "object",
                                                         "properties": {
                                                           "data": {
@@ -3580,7 +3580,7 @@
                   }
                 }
               },
-              "planned_meal": {
+              "planned": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -3750,7 +3750,7 @@
                                               }
                                             }
                                           },
-                                          "planned_meal": {
+                                          "planned": {
                                             "type": "object",
                                             "properties": {
                                               "data": {
@@ -3769,7 +3769,7 @@
                                                       "notes": {
                                                         "type": "string"
                                                       },
-                                                      "meal_template": {
+                                                      "name": {
                                                         "type": "object",
                                                         "properties": {
                                                           "data": {
@@ -4195,7 +4195,7 @@
                   }
                 }
               },
-              "planned_meal": {
+              "planned": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -4332,7 +4332,7 @@
                                               }
                                             }
                                           },
-                                          "planned_meal": {
+                                          "planned": {
                                             "type": "object",
                                             "properties": {
                                               "data": {
@@ -4351,7 +4351,7 @@
                                                       "notes": {
                                                         "type": "string"
                                                       },
-                                                      "meal_template": {
+                                                      "name": {
                                                         "type": "object",
                                                         "properties": {
                                                           "data": {
@@ -4777,7 +4777,7 @@
                   }
                 }
               },
-              "planned_meal": {
+              "planned": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -4871,7 +4871,7 @@
               "notes": {
                 "type": "string"
               },
-              "meal_template": {
+              "name": {
                 "oneOf": [
                   {
                     "type": "integer"
@@ -4902,7 +4902,7 @@
               "notes": {
                 "type": "string"
               },
-              "meal_template": {
+              "name": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -5262,7 +5262,7 @@
                               }
                             }
                           },
-                          "planned_meal": {
+                          "planned": {
                             "type": "object",
                             "properties": {
                               "data": {
@@ -5281,7 +5281,7 @@
                                       "notes": {
                                         "type": "string"
                                       },
-                                      "meal_template": {
+                                      "name": {
                                         "type": "object",
                                         "properties": {
                                           "data": {
@@ -5468,7 +5468,7 @@
               "notes": {
                 "type": "string"
               },
-              "meal_template": {
+              "name": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -5828,7 +5828,7 @@
                               }
                             }
                           },
-                          "planned_meal": {
+                          "planned": {
                             "type": "object",
                             "properties": {
                               "data": {
@@ -5847,7 +5847,7 @@
                                       "notes": {
                                         "type": "string"
                                       },
-                                      "meal_template": {
+                                      "name": {
                                         "type": "object",
                                         "properties": {
                                           "data": {
@@ -6067,7 +6067,7 @@
               "notes": {
                 "type": "string"
               },
-              "meal_template": {
+              "name": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -6427,7 +6427,7 @@
                               }
                             }
                           },
-                          "planned_meal": {
+                          "planned": {
                             "type": "object",
                             "properties": {
                               "data": {
@@ -6446,7 +6446,7 @@
                                       "notes": {
                                         "type": "string"
                                       },
-                                      "meal_template": {
+                                      "name": {
                                         "type": "object",
                                         "properties": {
                                           "data": {
@@ -6633,7 +6633,7 @@
               "notes": {
                 "type": "string"
               },
-              "meal_template": {
+              "name": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -6993,7 +6993,7 @@
                               }
                             }
                           },
-                          "planned_meal": {
+                          "planned": {
                             "type": "object",
                             "properties": {
                               "data": {
@@ -7012,7 +7012,7 @@
                                       "notes": {
                                         "type": "string"
                                       },
-                                      "meal_template": {
+                                      "name": {
                                         "type": "object",
                                         "properties": {
                                           "data": {
