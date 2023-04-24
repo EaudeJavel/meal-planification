@@ -46,16 +46,4 @@ module.exports = createCoreController("api::recipe.recipe", ({ strapi }) => ({
         ctx.throw(500, err);
       });
   },
-
-  async find(ctx) {
-    const sanitizedQueryParams = await this.sanitizeQuery(ctx);
-
-    // Call the find method of the "recipe" service to retrieve the recipes that match the query.
-    const { results, pagination } = await strapi
-      .service("api::recipe.recipe")
-      .find(sanitizedQueryParams);
-    const sanitizedResults = await this.sanitizeOutput(results, ctx);
-
-    return this.transformResponse(sanitizedResults, { pagination });
-  },
 }));
