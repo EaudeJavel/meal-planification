@@ -29,8 +29,7 @@ export const fetchPlannedMeal = async (id) => {
     const response = await axios.get(`${API_URL}/planned-meals/${id}`, {
       params: queryParams,
     });
-    console.log(response.data);
-    return response.data;
+    return response.data.data;
   } catch (error) {
     console.error("Error fetching planned meal:", error);
     throw error;
