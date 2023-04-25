@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchPlannedMeal } from "../Api";
+import GenerateSteps from "../GenerateSteps/GenerateSteps";
 import {
   MealName,
   MealDate,
@@ -45,6 +46,10 @@ function MealPage() {
           </IngredientItem>
         ))}
       </IngredientList> */}
+      {/* <GenerateSteps
+        mealTemplateId={plannedMeal.mealTemplateId}
+        mealDate={plannedMeal.attributes.date}
+      /> */}
     </MealPageContainer>
   );
 }

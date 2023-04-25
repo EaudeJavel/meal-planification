@@ -1,7 +1,7 @@
 {
   "name": "plean",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Meal planning",
   "scripts": {
     "develop": "strapi develop",
