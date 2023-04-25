@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as api from "../components/Api";
+import * as api from "../Api";
 
 function GenerateSteps() {
   const [recipeName, setRecipeName] = useState("");
