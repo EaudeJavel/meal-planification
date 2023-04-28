@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as api from "../Api";
 
 function GenerateSteps() {
@@ -7,6 +7,7 @@ function GenerateSteps() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGenerateRecipe = () => {
+    setIsLoading(true);
     api
       .generateRecipe(recipeName)
       .then((response) => {

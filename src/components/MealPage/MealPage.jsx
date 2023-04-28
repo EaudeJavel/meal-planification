@@ -18,11 +18,8 @@ function MealPage() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetchPlannedMeal(id);
-      console.log("MEALPAGE result : ", result);
-
       if (result) {
         setPlannedMeal(result);
-
       } else {
         console.error("No planned meal found for the given ID");
       }
@@ -38,6 +35,7 @@ function MealPage() {
     <MealPageContainer>
       <MealName>{plannedMeal.mealTemplateName}</MealName>
       <MealDate>{plannedMeal.attributes.date}</MealDate>
+      <MealDate>{plannedMeal.attributes.notes}</MealDate>
       <IngredientsTitle>Ingredients:</IngredientsTitle>
       {/* <IngredientList>
         {plannedMeal.relationships.mealTemplate.relationships.ingredients.data.map((ingredient, index) => (

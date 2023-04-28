@@ -22,8 +22,8 @@ function MealDetails({ meals }) {
       <NextMealsContainer>
         {nextTwoMeals.map((meal, i) => (
           <MealDetailsCard key={i}>
-            <MealName>{meal.attributes.name}</MealName>
             <MealDate>{meal.attributes.date}</MealDate>
+            <MealName>{meal.attributes.name}</MealName>
             <Link to={`/meal/${meal.id}`}>
               <Button>View Meal</Button>
             </Link>

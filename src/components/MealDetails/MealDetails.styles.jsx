@@ -3,31 +3,46 @@ import { paleOrange, deepTaupe, milkChocolate, plumpPurple, commonContainerStyle
 
 export const MealDetailsContainer = styled.div``;
 
+export const NextMealsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+`;
+
+export const RemainingMealsContainer = styled.div``;
+
+export const MealDetailsCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  background-color: ${deepTaupe};
+  padding: 20px;
+  ${commonBoxShadow}
+  margin-bottom: 20px;
+`;
+
 export const MealName = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 10px;
-  color: ${deepTaupe};
+  color: ${paleOrange};
 `;
 
 export const MealDate = styled.p`
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 10px;
-  color: ${deepTaupe};
+  color: ${paleOrange};
 `;
 
-export const NextMealsContainer = styled.div``;
-
-export const RemainingMealsContainer = styled.div``;
-
 export const Button = styled.button`
+  max-width: 250px;
+  min-height: 50px;
   font-size: 1rem;
   padding: 10px 20px;
   background-color: ${plumpPurple};
-  color: #fff;
+  color: ${paleOrange};
   border: none;
-  border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s;
 
@@ -39,12 +54,4 @@ export const Button = styled.button`
     background-color: #ccc;
     cursor: not-allowed;
   }
-`;
-
-export const MealDetailsCard = styled.div`
-  background-color: ${milkChocolate};
-  border-radius: 10px;
-  padding: 20px;
-  ${commonBoxShadow}
-  margin-bottom: 20px;
 `;

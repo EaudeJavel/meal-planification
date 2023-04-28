@@ -6,20 +6,21 @@ import { AppSection, Heading } from "../styles";
 function Meal() {
   const [meals, setMeals] = useState([]);
 
-
   useEffect(() => {
     const fetchData = async () => {
-      const result = await api.fetchMealTemplates();
+      const result = await api.fetchPlannedMeals();
       setMeals(result);
     };
     fetchData();
   }, []);
 
+  console.log(meals);
+
 
   return (
     <>
       <AppSection>
-        <Heading>Meals</Heading>
+        <Heading>Tes prochains repas</Heading>
         <MealDetails meals={meals} />
       </AppSection>
     </>

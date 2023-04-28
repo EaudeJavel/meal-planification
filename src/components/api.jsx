@@ -18,42 +18,29 @@ export const fetchMealTemplates = async () => {
   }
 };
 
-export const fetchPlannedMeal = async (id) => {
-  try {
-    const queryParams = new URLSearchParams({
-      _limit: 1,
-      id,
-    });
 
-    const response = await axios.get(`${API_URL}/planned-meals/`, {
-      params: queryParams,
-    });
+// export const fetchPlannedMeals = async (startDate, endDate) => {
+//   try {
+//     const queryParams = new URLSearchParams({
+//       populate: "mealTemplate",
+//       date_gte: startDate,
+//       date_lte: endDate,
+//     });
 
-    const plannedMeal = response.data.data[0];
-    console.log("plannedMeal", plannedMeal);
+//     const response = await axios.get(`${API_URL}/planned-meals`, {
+//       params: queryParams,
+//     });
+//     return response.data.data;
+//   } catch (error) {
+//     console.error("Error fetching planned meals:", error);
+//     throw error;
+//   }
+// };
 
-    const mealTemplateResponse = await axios.get(
-      `${API_URL}/meals/${plannedMeal.id}`
-    );
-    console.log("mealTemplateResponse", mealTemplateResponse);
-    const mealTemplateName = mealTemplateResponse.data.data.attributes.name;
-
-    return {
-      ...plannedMeal,
-      mealTemplateName,
-    };
-  } catch (error) {
-    console.error("Error fetching planned meal:", error);
-    throw error;
-  }
-};
-
-export const fetchPlannedMeals = async (startDate, endDate) => {
+export const fetchPlannedMeals = async () => {
   try {
     const queryParams = new URLSearchParams({
       populate: "mealTemplate",
-      date_gte: startDate,
-      date_lte: endDate,
     });
 
     const response = await axios.get(`${API_URL}/planned-meals`, {
@@ -62,6 +49,21 @@ export const fetchPlannedMeals = async (startDate, endDate) => {
     return response.data.data;
   } catch (error) {
     console.error("Error fetching planned meals:", error);
+    throw error;
+  }
+};
+
+export const fetchPlannedMeal = async (mealId) => {
+  try {
+    const response = await axios.get(`${API_URL}/planned-meals/${mealId}`);
+
+    if (response.status !== 200) {
+      throw new Error(`Failed to fetch planned meal. Status code: ${response.status}`);
+    }
+
+    return response.data.data;
+  } catch (error) {
+    console.error(`Error fetching planned meal with ID ${mealId}:`, error);
     throw error;
   }
 };
