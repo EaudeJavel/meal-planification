@@ -2,8 +2,11 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/configuration-reference/#jobs
+jobs:
   build_and_test: # this can be any name you choose
-   docker:
+    docker:
       - image: cimg/base:stable
     steps:
       - checkout
@@ -16,7 +19,7 @@ version: 2.1
           command: yarn build
           name: Build app
       - persist_to_workspace:
-          root: ~/project
+          root: ~/meal-planification
           paths: .
 
 # Orchestrate jobs using workflows
@@ -24,4 +27,4 @@ version: 2.1
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - build_and_test
