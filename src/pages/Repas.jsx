@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from "react";
-import MealDetails from "../components/MealDetails/MealDetails";
-import * as api from "../components/Api";
+import React from 'react';
+import { Suspense } from "react";
+import { useQuery } from '@tanstack/react-query';
 import { AppSection, Heading } from "../styles";
+import { fetchPlannedMeals } from '../components/Api';
+
+const MealDetails = React.lazy(() => import("../components/MealDetails/MealDetails"));
 
 function Meal() {
-  const [meals, setMeals] = useState([]);
+  const { isLoading, isError, data: mealsData } = useQuery(
+    ['plannedMeals'],
+    async () => {
+      const response = await fetchPlannedMeals();
+      console.log("Planned meals response:", response);
+      return response.data;
+    }
+  );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await api.fetchPlannedMeals();
-      setMeals(result);
-    };
-    fetchData();
-  }, []);
+  if (isLoading) {
+    return <p>Loading meals...</p>;
+  }
 
-  console.log(meals);
-
+  if (isError) {
+    return <p>Error fetching meals.</p>;
+  }
 
   return (
-    <>
-      <AppSection>
-        <Heading>Tes prochains repas</Heading>
-        <MealDetails meals={meals} />
-      </AppSection>
-    </>
+    <AppSection>
+      <Heading>Tes prochains repas</Heading>
+      <Suspense fallback={<p>Loading meal details...</p>}>
+        <MealDetails meals={mealsData} />
+      </Suspense>
+    </AppSection>
   );
 }
 

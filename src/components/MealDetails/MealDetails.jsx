@@ -10,9 +10,6 @@ import {
 } from "./MealDetails.styles";
 
 function MealDetails({ meals }) {
-  if (!Array.isArray(meals)) {
-    return <p>Loading meals...</p>;
-  }
 
   const nextTwoMeals = meals.slice(0, 2);
   const remainingMeals = meals.slice(2);
@@ -25,7 +22,7 @@ function MealDetails({ meals }) {
             <MealDate>{meal.attributes.date}</MealDate>
             <MealName>{meal.attributes.name}</MealName>
             <Link to={`/meal/${meal.id}`}>
-              <Button>View Meal</Button>
+              <Button>Voir ma recette</Button>
             </Link>
           </MealDetailsCard>
         ))}
@@ -37,7 +34,7 @@ function MealDetails({ meals }) {
             <MealName>{meal.attributes.name}</MealName>
             {/* <MealDate>{meal.attributes.day}</MealDate> */}
             <Link to={`/meal/${meal.attributes.id}`}>
-              <Button>View Meal</Button>
+              <Button>Voir ma recette</Button>
             </Link>
           </MealDetailsCard>
         ))}

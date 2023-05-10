@@ -1,4 +1,5 @@
 import axios from "axios";
+import { QueryClient, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const API_URL = "http://localhost:1337/api";
 
@@ -17,7 +18,6 @@ export const fetchMealTemplates = async () => {
     throw error;
   }
 };
-
 
 // export const fetchPlannedMeals = async (startDate, endDate) => {
 //   try {
@@ -68,7 +68,6 @@ export const fetchPlannedMeal = async (mealId) => {
   }
 };
 
-// Fetch the list of ingredients
 export const fetchIngredients = async () => {
   try {
     const response = await axios.get(`${API_URL}/ingredients`);
@@ -80,7 +79,6 @@ export const fetchIngredients = async () => {
   }
 };
 
-// Add a new meal
 export const addMealTemplate = async (mealTemplateData) => {
   try {
     const response = await axios.post(`${API_URL}/meals`, {
@@ -105,7 +103,6 @@ export const addPlannedMeal = async (plannedMealData) => {
   }
 };
 
-// Add a new ingredient
 export const addIngredient = async (ingredientData) => {
   try {
     const response = await axios.post(`${API_URL}/ingredients`, ingredientData);
@@ -127,4 +124,55 @@ export const generateRecipe = async (recipeName) => {
     console.error("Error generating recipe:", error);
     throw error;
   }
+};
+
+
+export const useMealTemplates = () => {
+  return useQuery('mealTemplates', fetchMealTemplates);
+};
+
+export const usePlannedMeals = () => {
+  return useQuery('plannedMeals', fetchPlannedMeals);
+};
+
+export const usePlannedMeal = (mealId) => {
+  return useQuery(['plannedMeal', mealId], () => fetchPlannedMeal(mealId), { enabled: Boolean(mealId) });
+};
+
+export const useIngredients = () => {
+  return useQuery('ingredients', fetchIngredients);
+};
+
+export const useAddMealTemplate = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(addMealTemplate, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('mealTemplates');
+    },
+  });
+};
+
+export const useAddPlannedMeal = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(addPlannedMeal, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('plannedMeals');
+    },
+  });
+};
+
+export const useAddIngredient = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(addIngredient, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('ingredients');
+    },
+  });
+};
+
+export const useGenerateRecipe = () => {
+  return useMutation(generateRecipe);
 };
