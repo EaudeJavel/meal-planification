@@ -6,7 +6,6 @@ import {
   NavList,
   NavItem,
 } from "./Navigation.styles";
-import { Square } from '../Square/Square.styles';
 
 const Navigation = ({ routes }) => {
   const location = useLocation();
@@ -17,7 +16,7 @@ const Navigation = ({ routes }) => {
             return (
               <NavItem key={path}>
                 <NavLink to={path}>{name.toLowerCase()}</NavLink>
-                {location.pathname === path && <Square />}
+                {location.pathname === path }
               </NavItem>
             );
           })}

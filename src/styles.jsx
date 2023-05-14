@@ -8,15 +8,26 @@ import styled, { css } from 'styled-components';
 // ********* COLORS ***********
 // ****************************
 
-
-
 export const paleOrange = '#FBD7C1';
 export const deepTaupe = '#7A695E';
 export const milkChocolate = '#7A523A';
 export const plumpPurple = '#5149AD';
+export const darkBrown = '#3B322D';
+export const darkerBrown = '#29231F';
 
 export const commonBoxShadow = css`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+export const commonSectionStyles = css`
+  display: flex;
+  background-color: ${darkBrown};
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 12px;
 `;
 
 export const commonContainerStyles = css`

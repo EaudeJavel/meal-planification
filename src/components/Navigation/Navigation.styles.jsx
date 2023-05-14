@@ -1,42 +1,40 @@
 import styled from 'styled-components';
 import { NavLink as RouterNavLink } from 'react-router-dom';
-import { paleOrange, deepTaupe} from "../../styles";
+import { paleOrange, deepTaupe, commonSectionStyles, darkerBrown} from "../../styles";
 
 export const Nav = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 60px;
-  background-color: ${paleOrange};
-  padding: 20px 0;
+  ${commonSectionStyles};
 `;
 
 export const NavList = styled.ul`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  width: 100%;
   list-style-type: none;
-  margin: 0;
   padding: 0;
 `;
 
 export const NavItem = styled.li`
   position: relative;
   display: flex;
+  height: 50px;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
 `;
 
 export const NavLink = styled(RouterNavLink)`
-  color: ${deepTaupe};
+  width: 100%;
+  height: 100%;
+  color: ${paleOrange};
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   text-decoration: none;
   padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: 300;
+
 
   &.active {
     font-weight: bold;
+    background-color: ${darkerBrown};
   }
 `;
