@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { fetchPlannedMeal } from "../Api";
+import usePlannedMeal from '../../hooks/usePlannedMeals';
 import GenerateSteps from "../GenerateSteps/GenerateSteps";
 import {
   MealName,
   MealDate,
   IngredientsTitle,
-  IngredientList,
-  IngredientItem,
+  // IngredientList,
+  // IngredientItem,
   MealPageContainer,
 } from "./MealPage.styles";
 
 function MealPage() {
-  const [plannedMeal, setPlannedMeal] = useState(null);
   const { id } = useParams();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchPlannedMeal(id);
-      if (result) {
-        setPlannedMeal(result);
-      } else {
-        console.error("No planned meal found for the given ID");
-      }
-    };
-    fetchData();
-  }, [id]);
+  const plannedMeal = usePlannedMeal(id);
 
   if (!plannedMeal) {
     return <p>Loading planned meal...</p>;
@@ -44,10 +32,7 @@ function MealPage() {
           </IngredientItem>
         ))}
       </IngredientList> */}
-      {/* <GenerateSteps
-        mealTemplateId={plannedMeal.mealTemplateId}
-        mealDate={plannedMeal.attributes.date}
-      /> */}
+      <GenerateSteps />
     </MealPageContainer>
   );
 }

@@ -1,49 +1,69 @@
-import styled from 'styled-components';
-import { paleOrange, deepTaupe, milkChocolate, plumpPurple } from "../../styles";
+import styled from "styled-components";
+import { paleOrange, deepTaupe, commonSectionStyles, darkerBrown } from "../../styles";
+
+export const CalendarContainer = styled.div`
+  height: 100%;
+  ${commonSectionStyles};
+  margin: 0px 6px 12px 12px;
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: ${paleOrange};
+    margin: 12px 0;
+  }
+`;
 
 export const WeeklyCalendarHeading = styled.h2`
   width: 100%;
   font-size: 16px;
-  font-weight: 300;
-  color: ${deepTaupe};
-  margin-bottom: 16px;
-  margin-top: 8px;
+  margin-left: 32px;
+  font-weight: 600;
+  color: ${paleOrange};
 `;
 
-export const CalendarContainer = styled.div`
+export const HeadingContainer = styled.div`
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 16px;
+  color: ${paleOrange};
+
+  .flex-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 export const Calendar = styled.div`
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 800px;
-  margin-bottom: 6em;
+  max-width: 400px;
 `;
 
 export const DayButton = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 64px;
-  height: 64px;
-  color: ${deepTaupe};
+  width: 100%;
+  color: ${paleOrange};
   position: relative;
   cursor: pointer;
+  padding: ${({ isSelected }) => (isSelected ? "12px 0" : "0")};
+  background-color: ${({ isSelected }) => (isSelected ? darkerBrown : "")};
   font-weight: ${({ isSelected }) => (isSelected ? "bold" : "normal")};
 
-  &:hover {
-    font-weight: bold;
+  .picto {
+    margin-right: 32px;
   }
 
-  .day-number {
-    font-size: 20px;
-    margin-bottom: 4px;
+  .day-name {
+    text-transform: capitalize;
   }
 `;

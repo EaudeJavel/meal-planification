@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { useQuery } from '@tanstack/react-query';
 import { AppSection, Heading } from "../styles";
 import { fetchPlannedMeals } from '../components/Api';
-
 const MealDetails = React.lazy(() => import("../components/MealDetails/MealDetails"));
 
 function Meal() {
@@ -11,8 +10,7 @@ function Meal() {
     ['plannedMeals'],
     async () => {
       const response = await fetchPlannedMeals();
-      console.log("Planned meals response:", response);
-      return response.data;
+      return response;
     }
   );
 

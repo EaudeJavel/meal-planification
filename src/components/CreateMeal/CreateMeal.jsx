@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
   Form,
   FormLabel,
@@ -8,30 +8,65 @@ import {
   IngredientInputGroup,
   CreateMealContainer,
   TextInputContainer,
-  Square,
+  InlineTitle,
+  TextSelect
 } from "./CreateMeal.styles";
+
+const Ingredient = ({ ingredient, index, onChange, onRemove }) => (
+  <IngredientInputGroup>
+    <FormLabel>
+      <TextInput
+        placeholder="Nom de l'ingrédient"
+        value={ingredient.name}
+        style={{ fontSize: "14px" }}
+        onChange={(e) => onChange(index, "name", e.target.value)}
+      />
+    </FormLabel>
+    <FormLabel>
+      <TextInput
+        type="number"
+        value={ingredient.quantity}
+        style={{ width: "70px", fontSize: "14px" }}
+        onChange={(e) => onCehange(index, "quantity", e.target.value)}
+      />
+    </FormLabel>
+    <FormLabel>
+      <TextSelect
+        value={ingredient.unit}
+        onChange={(e) => onChange(index, "unit", e.target.value)}
+      >
+        <option value="g">g</option>
+        <option value="ml">ml</option>
+        <option value="autre">autre</option>
+      </TextSelect>
+    </FormLabel>
+    <Button type="button" onClick={() => onRemove(index)}>
+      X
+    </Button>
+  </IngredientInputGroup>
+);
 
 function CreateMeal({ onSubmit }) {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [textWidth, setTextWidth] = useState(260);
 
-  const handleIngredientChange = (index, e) => {
-    if (index >= ingredients.length) {
-      return;
-    }
-    // Create a new array to avoid mutating the state
-    const newIngredients = [...ingredients];
-    newIngredients[index].name = e.target.value;
-    setIngredients(newIngredients);
+  const handleInputChange = (e) => {
+    const text = e.target.value;
+    setName(text);
   };
 
-  // Add an ingredient to the list
+  const handleIngredientChange = (index, field, value) => {
+    setIngredients((prevIngredients) => {
+      const newIngredients = [...prevIngredients];
+      newIngredients[index][field] = value;
+      return newIngredients;
+    });
+  };
+
   const addIngredient = () => {
     setIngredients([...ingredients, { name: "", quantity: 1, unit: "" }]);
   };
 
-  // Remove an ingredient from the list
   const removeIngredient = (index) => {
     setIngredients((prevState) => prevState.filter((_, i) => i !== index));
   };
@@ -41,97 +76,37 @@ function CreateMeal({ onSubmit }) {
     onSubmit({ name, ingredients });
   };
 
-  // Helper to measure the text placeholder width
-  function measureTextWidth(text, font) {
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    context.font = font;
-    const metrics = context.measureText(text);
-    return metrics.width;
-  }
-
-  // Handle the input change to update the placeholder width
-  const handleInputChange = (e) => {
-    const text = e.target.value;
-    setName(text);
-    if (text === "") {
-      setTextWidth(260);
-      return;
-    }
-    const width = measureTextWidth(text, "bold 1.2rem Inter");
-    setTextWidth(width + 12);
-  };
-
   return (
     <CreateMealContainer>
+      <InlineTitle>Entrez le nom et les ingrédients de la recette !</InlineTitle>
       <Form onSubmit={handleSubmit}>
         <TextInputContainer>
           <TextInput
             placeholder="Nom de la nouvelle recette"
             value={name}
-            style={{ fontWeight: "bold", fontSize: "1.2rem" }}
             onChange={handleInputChange}
           />
-          <Square style={{ left: `${textWidth}px` }} />
-
           <Button type="button" onClick={addIngredient}>
             Ajouter ingrédient
           </Button>
         </TextInputContainer>
 
         <IngredientsContainer>
-
-          {/* Container so i can make it scrollable */}
-          <div style={{ width:"100%" }}>
+          <div style={{ width: "100%" }}>
             {ingredients.map((ingredient, index) => (
-              <IngredientInputGroup key={index}>
-                <FormLabel>
-                  <TextInput
-                    placeholder="Nom de l'ingrédient"
-                    value={ingredient.name}
-                    style={{ fontSize: "14px"}}
-                    onChange={(e) => handleIngredientChange(index, e)}
-                  />
-                </FormLabel>
-                <FormLabel>
-                  <TextInput
-                    type="number"
-                    value={ingredient.quantity}
-                    style={{ width: "70px",fontSize: "14px" }}
-                    onChange={(e) =>
-                      setIngredients([
-                        ...ingredients.slice(0, index),
-                        { ...ingredient, quantity: e.target.value },
-                        ...ingredients.slice(index + 1),
-                      ])
-                    }
-                  />
-                </FormLabel>
-                <FormLabel>
-                  <select
-                    value={ingredient.unit}
-                    style={{ background: "none",border: "none", color:'inherit' }}
-                    onChange={(e) =>
-                      setIngredients([
-                        ...ingredients.slice(0, index),
-                        { ...ingredient, unit: e.target.value },
-                        ...ingredients.slice(index + 1),
-                      ])
-                    }
-                  >
-                    <option value="g">g</option>
-                    <option value="ml">ml</option>
-                    <option value="autre">autre</option>
-                  </select>
-                </FormLabel>
-                <Button type="button" onClick={() => removeIngredient(index)}>
-                  X
-                </Button>
-              </IngredientInputGroup>
+              <Ingredient
+                key={index}
+                ingredient={ingredient}
+                index={index}
+                onChange={handleIngredientChange}
+                onRemove={removeIngredient}
+              />
             ))}
           </div>
         </IngredientsContainer>
-        <Button type="submit" style={{ alignSelf:"center" }}>Créer ma recette</Button>
+        <Button type="submit" style={{ alignSelf: "center" }}>
+          Créer ma recette
+        </Button>
       </Form>
     </CreateMealContainer>
   );

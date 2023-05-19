@@ -4,6 +4,7 @@ import { paleOrange, deepTaupe, commonSectionStyles, darkerBrown} from "../../st
 
 export const Nav = styled.nav`
   ${commonSectionStyles};
+  margin: 12px 6px 12px 12px;
 `;
 
 export const NavList = styled.ul`
@@ -11,6 +12,7 @@ export const NavList = styled.ul`
   flex-direction: column;
   width: 100%;
   list-style-type: none;
+  margin: 0;
   padding: 0;
 `;
 

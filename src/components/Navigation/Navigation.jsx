@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import {
   Nav,
   NavLink,
@@ -8,7 +7,6 @@ import {
 } from "./Navigation.styles";
 
 const Navigation = ({ routes }) => {
-  const location = useLocation();
   return (
       <Nav>
         <NavList>
@@ -16,7 +14,6 @@ const Navigation = ({ routes }) => {
             return (
               <NavItem key={path}>
                 <NavLink to={path}>{name.toLowerCase()}</NavLink>
-                {location.pathname === path }
               </NavItem>
             );
           })}

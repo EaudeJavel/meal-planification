@@ -1,104 +1,157 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import SelectMeal from "../SelectMeal/SelectMeal";
 import CreateMeal from "../CreateMeal/CreateMeal";
-import { fetchMealTemplates, addMealTemplate } from "../Api";
-import { Square } from "../Square/Square.styles";
-import {
-  SubHeading,
-  Button,
-  InlineButton,
-  MealPlannerContainer,
-} from "./MealPlanner.styles";
+import { addMealTemplate } from "../Api";
+import { MdQuestionMark, MdAdd } from "react-icons/md";
+import { Helper, Button, MealPlannerContainer } from "./MealPlanner.styles";
+import { Heading, SubHeading, PageContainer } from "../../styles";
+import { getDateString } from "../../utils/getDateString";
+import { ButtonContainer } from "../ButtonContainer";
+import { useFetchMeals } from "../../hooks/useFetchMeals";
 
-function MealPlanner({ onCancel }) {
-  const [meals, setMeals] = useState([]);
+function MealPlanner({ onCancel, selectedDate }) {
+  const meals = useFetchMeals();
   const [selectedMeal, setSelectedMeal] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [activeComponent, setActiveComponent] = useState(null);
 
-  const fetchAndSetMeals = async () => {
-    const fetchedMeals = await fetchMealTemplates();
-    setMeals(fetchedMeals);
-  };
-
-  useEffect(() => {
-    fetchAndSetMeals();
-  }, []);
-
   const handleSubmit = async (mealData) => {
-    const mealDataWithDate = { ...mealData, date: selectedDate.toISOString() };
+    const mealDataWithDate = {
+      ...mealData,
+      date: selectedDate.toLocaleDateString(),
+    };
     const createdMeal = await addMealTemplate(mealDataWithDate);
     setSelectedMeal(createdMeal);
   };
 
-  if (!selectedMeal) {
+  return !selectedMeal ? (
+    <MealSelector
+      selectedDate={selectedDate}
+      meals={meals}
+      setSelectedMeal={setSelectedMeal}
+      activeComponent={activeComponent}
+      setActiveComponent={setActiveComponent}
+      handleSubmit={handleSubmit}
+    />
+  ) : (
+    <Confirmation
+      selectedMeal={selectedMeal}
+      onCancel={onCancel}
+    />
+  );
+}
+
+const MealSelector = ({
+  selectedDate,
+  meals,
+  setSelectedMeal,
+  activeComponent,
+  setActiveComponent,
+  handleSubmit,
+}) => {
+  const [showHelpText, setShowHelpText] = useState(false);
+  const dateString = getDateString(selectedDate);
+
+  const toggleHelpText = (event) => {
+    event.stopPropagation();
+    setShowHelpText(!showHelpText);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (showHelpText && !event.target.closest(".modal-content")) {
+        setShowHelpText(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [showHelpText]);
+
+  if (!selectedDate) {
     return (
-      <>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <InlineButton
-              onClick={() => setActiveComponent("CreateMeal")}
-              isActive={activeComponent === "CreateMeal"}
-            >
-              Créer une nouvelle recette
-            </InlineButton>
-            {activeComponent === "CreateMeal" && <Square />}
-          </div>
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <InlineButton
-              onClick={() => setActiveComponent("SelectMeal")}
-              isActive={activeComponent === "SelectMeal"}
-            >
-              Choisir une recette existante
-            </InlineButton>
-            {activeComponent === "SelectMeal" && <Square />}
-          </div>
+      <PageContainer>
+        <div>
+          <Heading>Please select a date.</Heading>
+          <Link to="/">Homepage</Link>
         </div>
+      </PageContainer>
+    );
+  }
+
+  return (
+    <>
+      <Helper>
+        <div className="content" onClick={toggleHelpText}>
+          <MdQuestionMark />
+        </div>
+        {showHelpText && (
+          <div className="modal">
+            <div className="modal-content">
+              <p>je t'aime élisalla wagba</p>
+            </div>
+          </div>
+        )}
+      </Helper>
+      <PageContainer style={{ paddingTop: "2rem" }}>
+        <div>
+          <Heading style={{ margin: "0" }}>{dateString}</Heading>
+          <SubHeading style={{ margin: "6px 0 24px 0" }}>
+            Qu'est-ce qu'on mange aujourd'hui?
+          </SubHeading>
+        </div>
+
+        <div style={{ display: "flex", minHeight: "55px", marginTop: "2em" }}>
+          <ButtonContainer
+            activeComponent={activeComponent}
+            setActiveComponent={setActiveComponent}
+            componentName="CreateMeal"
+          >
+            <MdAdd style={{ marginRight: "8px" }} />
+            Créer une nouvelle recette
+          </ButtonContainer>
+          <ButtonContainer
+            activeComponent={activeComponent}
+            setActiveComponent={setActiveComponent}
+            componentName="SelectMeal"
+          >
+            Choisir une recette existante
+          </ButtonContainer>
+        </div>
+
         <MealPlannerContainer>
-          {activeComponent === "SelectMeal" && (
+          {activeComponent === "SelectMeal" && selectedDate && (
             <SelectMeal
               meals={meals}
               onSelect={setSelectedMeal}
               selectedDate={selectedDate}
             />
           )}
-          {activeComponent === "CreateMeal" && (
+          {activeComponent === "CreateMeal" && selectedDate && (
             <CreateMeal onSubmit={handleSubmit} selectedDate={selectedDate} />
           )}
         </MealPlannerContainer>
-      </>
-    );
-  }
+      </PageContainer>
+    </>
+  );
+};
+
+const Confirmation = ({ selectedMeal, onCancel }) => {
   return (
-    // CONFIRMATION
     <div>
-      <SubHeading>
-        Selected Meal:{" "}
+      <Heading>
         {selectedMeal.attributes
           ? selectedMeal.attributes.name
           : selectedMeal.name}
-      </SubHeading>
-      <Button onClick={onCancel}>Cancel</Button>
+      </Heading>
+      <SubHeading>On part sur cette recette aujourd'hui?</SubHeading>
+      <Button>Confirmer</Button>
+      <Button onClick={onCancel}>Annuler</Button>
     </div>
   );
-}
+};
 
 export default MealPlanner;

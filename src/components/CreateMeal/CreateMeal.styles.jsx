@@ -2,10 +2,11 @@ import styled from "styled-components";
 import {
   paleOrange,
   deepTaupe,
-  milkChocolate,
   plumpPurple,
   commonContainerStyles,
-  commonBoxShadow
+  commonBoxShadow,
+  darkBrown,
+  darkerBrown,
 } from "../../styles";
 
 export const Form = styled.form`
@@ -18,28 +19,58 @@ export const FormLabel = styled.label`
   font-size: 1.1rem;
   display: block;
   margin-bottom: 10px;
-  color: ${deepTaupe};
+  color: ${paleOrange};
 `;
 
 export const TextInput = styled.input`
   border: none;
   width: 100%;
+  min-height: 42px;
+  padding: 10px 20px;
   box-sizing: border-box;
-  background-color: ${paleOrange};
+  background-color: ${darkerBrown};
   font-weight: 400;
-  color: ${deepTaupe};
+  color: ${paleOrange};
 
   ::-webkit-input-placeholder {
-    color: ${deepTaupe};
+    color: ${paleOrange};
   }
   ::-moz-placeholder {
-    color: ${deepTaupe};
+    color: ${paleOrange};
   }
   :-ms-input-placeholder {
-    color: ${deepTaupe};
+    color: ${paleOrange};
   }
   :-moz-placeholder {
-    color: ${deepTaupe};
+    color: ${paleOrange};
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const TextSelect = styled.select`
+  border: none;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  background-color: ${darkerBrown};
+  font-weight: 400;
+  color: ${paleOrange};
+
+  ::-webkit-input-placeholder {
+    color: ${paleOrange};
+  }
+  ::-moz-placeholder {
+    color: ${paleOrange};
+  }
+  :-ms-input-placeholder {
+    color: ${paleOrange};
+  }
+  :-moz-placeholder {
+    color: ${paleOrange};
   }
 
   &:focus {
@@ -89,40 +120,14 @@ export const IngredientInputGroup = styled.div`
 
 export const CreateMealContainer = styled.div`
   width: 100%;
-  margin-top: 3em;
+  margin-top: 1em;
   ${commonContainerStyles}
+  align-items: normal;
 `;
 
-export const Square = styled.span`
-  display: inline-block;
-  position: absolute;
-  top: 24px;
-  width: 12px;
-  height: 12px;
-  background-color: ${plumpPurple};
-  ${commonBoxShadow}
-  animation: pulse 2s ease-out infinite;
-
-  @keyframes pulse {
-    0% {
-      opacity: 0;
-      transform: scale(0);
-    }
-    25% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.5;
-      transform: scale(0.8);
-    }
-    75% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: scale(0);
-    }
-  }
+export const InlineTitle = styled.h3`
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${paleOrange};
+  margin: 12px 0 12px 0;
 `;

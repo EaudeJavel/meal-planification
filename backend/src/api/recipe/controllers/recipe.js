@@ -7,10 +7,15 @@ module.exports = createCoreController("api::recipe.recipe", ({ strapi }) => ({
   async generateRecipe(ctx) {
     const { recipe_name } = ctx.request.body;
 
+    // Validate the request body.
+    if (!recipe_name) {
+      ctx.throw(400, "recipe_name is required");
+    }
+
     // Wrap the Python script execution in a Promise so that we can properly handle the results.
     return new Promise((resolve, reject) => {
       const pythonProcess = spawn("python3", [
-        "src/api/recipe/utils.py",
+        "src/api/recipe/generate_recipe.py",
         recipe_name,
       ]);
       let result = "";

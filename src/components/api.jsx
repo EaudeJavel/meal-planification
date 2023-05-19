@@ -84,6 +84,7 @@ export const addMealTemplate = async (mealTemplateData) => {
     const response = await axios.post(`${API_URL}/meals`, {
       data: mealTemplateData,
     });
+    console.log("Meal template response:", response.data);
     return response;
   } catch (error) {
     console.error("Error adding meal:", error);
@@ -116,63 +117,14 @@ export const addIngredient = async (ingredientData) => {
 
 export const generateRecipe = async (recipeName) => {
   try {
+    console.log("Recipe name:", recipeName);
     const response = await axios.post(`${API_URL}/recipe/generate`, {
       recipe_name: recipeName,
     });
-    return response.data.result;
+    console.log("Recipe response:", response);
+    return response;
   } catch (error) {
     console.error("Error generating recipe:", error);
     throw error;
   }
-};
-
-
-export const useMealTemplates = () => {
-  return useQuery('mealTemplates', fetchMealTemplates);
-};
-
-export const usePlannedMeals = () => {
-  return useQuery('plannedMeals', fetchPlannedMeals);
-};
-
-export const usePlannedMeal = (mealId) => {
-  return useQuery(['plannedMeal', mealId], () => fetchPlannedMeal(mealId), { enabled: Boolean(mealId) });
-};
-
-export const useIngredients = () => {
-  return useQuery('ingredients', fetchIngredients);
-};
-
-export const useAddMealTemplate = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation(addMealTemplate, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('mealTemplates');
-    },
-  });
-};
-
-export const useAddPlannedMeal = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation(addPlannedMeal, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('plannedMeals');
-    },
-  });
-};
-
-export const useAddIngredient = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation(addIngredient, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('ingredients');
-    },
-  });
-};
-
-export const useGenerateRecipe = () => {
-  return useMutation(generateRecipe);
 };

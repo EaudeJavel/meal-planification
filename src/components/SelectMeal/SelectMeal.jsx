@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import useFilteredMeals from "../../hooks/useFilteredMeals";
 import {
   Input,
   SelectMealContainer,
@@ -8,14 +9,15 @@ import {
 } from "./SelectMeal.styles";
 
 function SelectMeal({ meals, onSelect }) {
-  const [inputValue, setInputValue] = useState("");
-  const [isFilteredMealsVisible, setIsFilteredMealsVisible] = useState(false);
-
-  // Filter meals based on input value
-  const filteredMeals = meals.filter(
-    (meal) =>
-      meal.attributes.name.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1
-  );
+  const {
+    inputValue,
+    isFilteredMealsVisible,
+    filteredMeals,
+    selectedMeal,
+    setInputValue,
+    setIsFilteredMealsVisible,
+    handleMealSelect,
+  } = useFilteredMeals(meals);
 
   return (
     <SelectMealContainer>
@@ -33,10 +35,7 @@ function SelectMeal({ meals, onSelect }) {
         {filteredMeals.map((meal) => (
           <FilteredMeal
             key={meal.id}
-            onClick={() => {
-              setInputValue(meal.attributes.name);
-              setIsFilteredMealsVisible(false);
-            }}
+            onClick={() => handleMealSelect(meal.attributes.name)}
           >
             {meal.attributes.name}
           </FilteredMeal>
@@ -44,9 +43,6 @@ function SelectMeal({ meals, onSelect }) {
       </FilteredMealsContainer>
       <SubmitButton
         onClick={() => {
-          const selectedMeal = meals.find(
-            (meal) => meal.attributes.name === inputValue
-          );
           if (selectedMeal) {
             onSelect(selectedMeal);
           }

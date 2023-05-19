@@ -1,12 +1,12 @@
-import React, { useState, useMemo } from 'react';
-import { format, startOfWeek, addDays } from 'date-fns';
-import MealPlanner from '../MealPlanner/MealPlanner';
-import { Square } from '../Square/Square.styles';
-import { fr } from 'date-fns/locale';
+import React, { useMemo } from "react";
+import { format, startOfWeek, addDays } from "date-fns";
+import { fr } from "date-fns/locale";
+import { MdCalendarMonth, MdLunchDining } from "react-icons/md";
 import {
   CalendarContainer,
+  HeadingContainer,
   Calendar,
-  DayButton,
+  DayButton as StyledDayButton,
   WeeklyCalendarHeading,
 } from "./WeeklyCalendar.styles";
 
@@ -19,34 +19,48 @@ function getDaysOfWeek(today) {
   return Array.from({ length: 7 }, (_, i) => addDays(start, i));
 }
 
-function WeeklyCalendar() {
-  const [selectedDate, setSelectedDate] = useState(null);
+const DayButton = ({ day, selectedDate, setSelectedDate }) => (
+  <StyledDayButton
+    key={day.getTime()}
+    onClick={() => setSelectedDate(day)}
+    isSelected={selectedDate?.getTime() === day.getTime()}
+  >
+    <div className="picto">
+      {" "}
+      <MdLunchDining />{" "}
+    </div>
+    <div className="day-name">
+      {format(day, "EEEE dd MMMM", { locale: fr })}
+    </div>
+  </StyledDayButton>
+);
+
+function WeeklyCalendar({ selectedDate, setSelectedDate }) {
   const today = new Date();
   const firstDayOfWeek = getFirstDayOfWeek(selectedDate);
   const daysOfWeek = useMemo(() => getDaysOfWeek(today), [today]);
 
   return (
     <CalendarContainer>
-      <WeeklyCalendarHeading>Semaine du {format(firstDayOfWeek, "dd MMMM", { locale: fr })}</WeeklyCalendarHeading>
+      <HeadingContainer>
+        <div className="flex-container">
+          <MdCalendarMonth />
+          <WeeklyCalendarHeading>
+            Semaine du {format(firstDayOfWeek, "dd MMMM", { locale: fr })}
+          </WeeklyCalendarHeading>
+        </div>
+        <div className="line"></div>
+      </HeadingContainer>
       <Calendar>
-        {daysOfWeek.map((day, index) => (
+        {daysOfWeek.map((day) => (
           <DayButton
-            key={index}
-            onClick={() => setSelectedDate(day)}
-            isSelected={selectedDate?.getTime() === day.getTime()}
-          >
-            <div className="day-number">{format(day, "dd")}</div>
-            <div className="day-name">{format(day, "EEEE", { locale: fr })}</div>
-            {selectedDate?.getTime() === day.getTime() && <Square />}
-          </DayButton>
+            key={day.getTime()}
+            day={day}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
         ))}
       </Calendar>
-      {selectedDate && (
-        <MealPlanner
-          selectedDate={selectedDate}
-          onCancel={() => setSelectedDate(null)}
-        />
-      )}
     </CalendarContainer>
   );
 }
