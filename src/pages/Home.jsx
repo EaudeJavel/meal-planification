@@ -63,14 +63,13 @@ function HomePage() {
   return (
     <>
       <PageContainer>
-        <Heading>Bonjour Paul !</Heading>
+        <Heading>Hey Paul !</Heading>
         <SubHeading style={{ margin: "6px 0 24px 0" }}>
           Comment est votre blanquette?
         </SubHeading>
-        <InlineTitle>Vos recettes préférées</InlineTitle>
+        <InlineTitle>Your favorite recipes</InlineTitle>
         <InlineSubTitle>
-          Qu’elles soient rapides à faire, ou succulentes, ou les deux, vous les
-          adorez donc elles vous attendent !
+          Whether they are quick to make, or delicious, or both, you love them, so they await you!
         </InlineSubTitle>
         <RecipeContainer>
           {preferredRecipes.slice(0, numItemsToRender).map((recipe, index) => (
@@ -78,13 +77,13 @@ function HomePage() {
           ))}
         </RecipeContainer>
 
-        <InlineTitle>T'as envie de tester tes connaissances ?</InlineTitle>
-        <InlineSubTitle>Bon courage senpai. Tu peux le faire !</InlineSubTitle>
+        <InlineTitle>You want to try a game ?</InlineTitle>
+        <InlineSubTitle>Have fun. You can do it !</InlineSubTitle>
         <TestCard>
           <a target="blank" href="https://raclette.space">
             <img src="https://picsum.photos/179/120" alt="recipe" />
-            <TestCardHeading>Test de connaissances</TestCardHeading>
-            <TestCardSubHeading>Je veux jouer</TestCardSubHeading>
+            <TestCardHeading>Pere lachaise guesser</TestCardHeading>
+            <TestCardSubHeading>Play</TestCardSubHeading>
           </a>
         </TestCard>
       </PageContainer>

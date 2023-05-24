@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { format, startOfWeek, addDays } from "date-fns";
-import { fr } from "date-fns/locale";
 import { MdCalendarMonth, MdLunchDining } from "react-icons/md";
 import {
   CalendarContainer,
@@ -30,7 +29,7 @@ const DayButton = ({ day, selectedDate, setSelectedDate }) => (
       <MdLunchDining />{" "}
     </div>
     <div className="day-name">
-      {format(day, "EEEE dd MMMM", { locale: fr })}
+      {format(day, "EEEE dd MMMM")}
     </div>
   </StyledDayButton>
 );
@@ -46,7 +45,7 @@ function WeeklyCalendar({ selectedDate, setSelectedDate }) {
         <div className="flex-container">
           <MdCalendarMonth />
           <WeeklyCalendarHeading>
-            Semaine du {format(firstDayOfWeek, "dd MMMM", { locale: fr })}
+            Week of the {format(firstDayOfWeek, "dd MMMM")}
           </WeeklyCalendarHeading>
         </div>
         <div className="line"></div>

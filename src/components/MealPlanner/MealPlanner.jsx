@@ -91,7 +91,7 @@ const MealSelector = ({
         {showHelpText && (
           <div className="modal">
             <div className="modal-content">
-              <p>je t'aime élisalla wagba</p>
+              <p>Back-end not working</p>
             </div>
           </div>
         )}
@@ -100,7 +100,7 @@ const MealSelector = ({
         <div>
           <Heading style={{ margin: "0" }}>{dateString}</Heading>
           <SubHeading style={{ margin: "6px 0 24px 0" }}>
-            Qu'est-ce qu'on mange aujourd'hui?
+            What are we eating today?
           </SubHeading>
         </div>
 
@@ -111,14 +111,14 @@ const MealSelector = ({
             componentName="CreateMeal"
           >
             <MdAdd style={{ marginRight: "8px" }} />
-            Créer une nouvelle recette
+            Create a new meal
           </ButtonContainer>
           <ButtonContainer
             activeComponent={activeComponent}
             setActiveComponent={setActiveComponent}
             componentName="SelectMeal"
           >
-            Choisir une recette existante
+            Choose an existing meal
           </ButtonContainer>
         </div>
 
@@ -147,9 +147,9 @@ const Confirmation = ({ selectedMeal, onCancel }) => {
           ? selectedMeal.attributes.name
           : selectedMeal.name}
       </Heading>
-      <SubHeading>On part sur cette recette aujourd'hui?</SubHeading>
-      <Button>Confirmer</Button>
-      <Button onClick={onCancel}>Annuler</Button>
+      <SubHeading>Let's get it on</SubHeading>
+      <Button>Yes</Button>
+      <Button onClick={onCancel}>Previous</Button>
     </div>
   );
 };

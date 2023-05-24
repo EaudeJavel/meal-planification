@@ -15,16 +15,16 @@ function Meal() {
   );
 
   if (isLoading) {
-    return <p>Loading meals...</p>;
+    return <Heading>Meals loading...</Heading>;
   }
 
   if (isError) {
-    return <p>Error fetching meals.</p>;
+    return <Heading>Need back-end connection</Heading>;
   }
 
   return (
     <AppSection>
-      <Heading>Tes prochains repas</Heading>
+      <Heading>Your next meals</Heading>
       <Suspense fallback={<p>Loading meal details...</p>}>
         <MealDetails meals={mealsData} />
       </Suspense>

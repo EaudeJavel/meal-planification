@@ -43,7 +43,7 @@ function GroceryList() {
 
   return (
     <PageContainer>
-      <Heading>Liste de courses</Heading>
+      <Heading>Grocery List</Heading>
       <IngredientList>
         {Object.entries(groceryList).map(([ingredient, count]) => (
           <Ingredient key={ingredient}>
